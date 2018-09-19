@@ -1,0 +1,41 @@
+<div class="docs-content" style="margin-top: 50px;min-height: 1200px;">
+  <div class="docs-content-row">
+    <div class="docs-content-item">
+        <dl-pie-chart 
+          [chartid]="'pie-chart-demo'" 
+          [values]="filterValues" 
+          (valueSelect)="onValueSelect($event)"
+          (valueDeselect)="onValueDeselect($event)"
+          (valueChange)="onValueChange($event)"
+        ></dl-pie-chart>
+    </div>
+    <div class="docs-content-item">
+      <div>
+        <mat-form-field class="input-full-width">
+          <input matInput placeholder="Chart live filter" [(ngModel)]="filterValue">
+        </mat-form-field>
+      </div>
+      <div>
+        <h4>Legend options</h4>
+        <mat-checkbox [(ngModel)]="hideChartHoverEffect">Hide Chart hover effect</mat-checkbox>
+        <mat-checkbox [(ngModel)]="hideChartSelectEffect">Hide Chart select effect</mat-checkbox>
+        <br><br>
+        <dl-chart-legend [chartid]="'pie-chart-demo'"></dl-chart-legend>
+      </div>
+    </div>
+  </div>
+  <div class="docs-content-row">
+    <div>
+      <div class="json-output">
+        <p>Selected Object (JSON):</p>
+        <pre>{{objectSelect | json}}</pre>
+      </div>
+    </div>
+    <div class="docs-content-item">
+      <div class="json-output">
+        <p>Hover Object (JSON):</p>
+        <pre>{{objectHover | json}}</pre>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="docs-content" style="margin-top: 50px;min-height: 1200px;">
+  <div class="docs-content-row">
+    <div class="docs-content-item">
+        <dl-bar-chart 
+          [chartid]="'bar-chart-demo'" 
+          [values]="filterValues" 
+          (valueSelect)="onValueSelect($event)"
+          (valueDeselect)="onValueDeselect($event)"
+          (valueChange)="onValueChange($event)"
+          [orientation]="selectedOrientation"
+          [barOffset]="barOffset"
+          [steps]="scaleSteps"
+          [leftScaleAxis]="leftScaleAxis"
+          [rightScaleAxis]="rightScaleAxis"
+          [hideSelectLine]="hideSelectLine"
+        ></dl-bar-chart>
+    </div>
+    <div class="docs-content-item">
+      <mat-form-field class="input-full-width">
+        <input matInput placeholder="Chart name/value filter" [(ngModel)]="filterValue">
+      </mat-form-field>
+      <h4>Bar Chart options</h4>
+      <div class="input-filters">
+        <mat-form-field>
+          <input matInput type="number" placeholder="Scale steps" [(ngModel)]="scaleSteps">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Bar orientation" [(ngModel)]="selectedOrientation">
+            <mat-option [value]="0">Bottom</mat-option>
+            <mat-option [value]="1">Left</mat-option>
+            <mat-option [value]="2">Right</mat-option>
+            <mat-option [value]="3">Top</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="number" placeholder="Bar offset" [(ngModel)]="barOffset">
+        </mat-form-field>
+        <mat-checkbox [(ngModel)]="hideSelectLine">Hide selection Line</mat-checkbox>
+        <mat-checkbox [(ngModel)]="leftScaleAxis">Left Scale Axis</mat-checkbox>
+        <mat-checkbox [(ngModel)]="rightScaleAxis">Right Scale Axis</mat-checkbox>
+      </div>
+      <br>
+      <hr>
+      <div>
+        <h4>Legend options</h4>
+        <mat-checkbox [(ngModel)]="hideChartHoverEffect">Hide Chart hover effect</mat-checkbox>
+        <mat-checkbox [(ngModel)]="hideChartSelectEffect">Hide Chart select effect</mat-checkbox>
+        <br><br>
+        <dl-chart-legend 
+          [chartid]="'bar-chart-demo'"
+          [hideChartHoverEffect]="hideChartHoverEffect"
+          [hideChartSelectEffect]="hideChartSelectEffect"
+        ></dl-chart-legend>
+      </div>  
+    </div>
+  </div>
+  <div class="docs-content-row">
+    <div>
+      <div class="json-output">
+        <p>Selected Object (JSON):</p>
+        <pre>{{objectSelect | json}}</pre>
+      </div>
+    </div>
+    <div class="docs-content-item">
+      <div class="json-output">
+        <p>Hover Object (JSON):</p>
+        <pre>{{objectHover | json}}</pre>
+      </div>
+    </div>
+  </div>
+</div>

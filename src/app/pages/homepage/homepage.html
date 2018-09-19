@@ -1,0 +1,55 @@
+<header class="docs-header-background">
+  <div class="docs-header-section">
+    <div class="docs-header-headline">
+      <h1 class="mat-h1">dlChart</h1>
+      <h2> lightweight Angular Chart</h2>
+    </div>
+    <div class="docs-header-start">
+     <a mat-raised-button class="docs-button" routerLink="/piechart">Pie Chart</a>
+     <a mat-raised-button class="docs-button" routerLink="/barchart">Bar Chart</a>
+     <a mat-raised-button class="docs-button" href="https://github.com/Chtau/dlChart"><img class="docs-github-button"
+      src="../../../assets/img/homepage/github-circle-white-transparent.svg"
+      alt="dlChart">
+       Github</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-homepage-promo">
+  <div class="docs-homepage-row">
+    <div class="docs-homepage-promo-img">
+      <dl-pie-chart [chartid]="'test-chart'" [values]="values1"></dl-pie-chart>
+    </div>
+    <div class="docs-homepage-promo-desc">
+      <h2>Fast loading</h2>
+      <p>Fast loading time because of the small package size without the need of any additional dependencies.</p>
+    </div>
+  </div>
+  <div class="docs-homepage-row docs-homepage-reverse-row">
+    <div class="docs-homepage-promo-img">
+      <dl-bar-chart [chartid]="'test-chart-bar'" [scaleLabel]="'Demo Values'" [steps]="10" [values]="values1"></dl-bar-chart>
+    </div>
+    <div class="docs-homepage-promo-desc">
+      <h2>TypeScript & Angular & SVG</h2>
+      <p>Build with the goal for a nativ lightweight Angular Charts library in mind for Dashboards and other needs.</p>
+    </div>
+  </div>
+  <div class="docs-homepage-row">
+    <div class="docs-homepage-promo-img">
+      <dl-bar-chart [orientation]="1" [chartid]="'test-chart-bar-1'" [scaleLabel]="'Demo Values'" [steps]="10" [values]="values1"></dl-bar-chart>
+    </div>
+    <div class="docs-homepage-promo-desc">
+      <h2>Flexible</h2>
+      <p>Additional data can be set in the Chart values which will then be provided in the Click and Select events.</p>
+    </div>
+  </div>
+  <div class="docs-homepage-row docs-homepage-reverse-row">
+    <div class="docs-homepage-promo-img">
+      <dl-bar-chart [orientation]="2" [rightScaleAxis]="true" [chartid]="'test-chart-bar-2'" [scaleLabel]="'Demo Values'" [steps]="20" [values]="values1"></dl-bar-chart>
+    </div>
+    <div class="docs-homepage-promo-desc">
+      <h2>Legend module</h2>
+      <p>Use the buildin Legends module or import the ChartItem service and create your own.</p>
+    </div>
+  </div>
+</div>
