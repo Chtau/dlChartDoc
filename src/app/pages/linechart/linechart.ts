@@ -18,6 +18,9 @@ export class LineChart implements OnInit {
   leftScaleAxis: boolean = true;
   rightScaleAxis: boolean = false;
   hideSelectLine: boolean = false;
+  hideRaster: boolean = false;
+  hideLines: boolean = false;
+  hidePoints: boolean = false;
 
   hideChartHoverEffect: boolean = false;
   hideChartSelectEffect: boolean = false;
