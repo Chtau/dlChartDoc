@@ -11,6 +11,7 @@ import { NavBarModule } from './shared/navbar';
 import { HttpClientModule } from '@angular/common/http';
 import { BarChartModule } from './pages/barchart';
 import { PiechartModule } from './pages/piechart';
+import { LineChartModule } from './pages/linechart';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { PiechartModule } from './pages/piechart';
     HomepageModule,
     BarChartModule,
     PiechartModule,
-    
+    LineChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

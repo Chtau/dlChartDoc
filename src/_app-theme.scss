@@ -5,6 +5,7 @@
 @import './styles/svg-theme';
 @import './app/pages/piechart/piechart-theme';
 @import './app/pages/barchart/barchart-theme';
+@import './app/pages/linechart/linechart-theme';
 
 
 // Styles for the docs app that are based on the current theme.
@@ -37,4 +38,5 @@
   @include nav-bar-theme($theme);
   @include barchart-page-theme($theme);
   @include piechart-page-theme($theme);
+  @include linechart-page-theme($theme);
 }

@@ -1,7 +1,7 @@
 import {Component, NgModule, OnInit} from '@angular/core';
 import {MatButtonModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
-import { Value, TooltipConfiguration } from 'dl-chart';
+import { Value, TooltipConfiguration, DonutConfiguration, Point, Line } from 'dl-chart';
 import { DlChartModule } from "dl-chart";
 
 @Component({
@@ -11,6 +11,11 @@ import { DlChartModule } from "dl-chart";
 })
 export class Homepage implements OnInit {
 
+  donutConfig: DonutConfiguration = {
+    color: 'white',
+    size: .5
+  };
+
   values1: Value[] = [
     new Value('Red', 5, 'Red'),
     new Value('Blue', 3, 'Blue'),
@@ -18,6 +23,60 @@ export class Homepage implements OnInit {
     new Value('Orange', 3, 'Orange'),
     new Value('Yellow', 7, 'Yellow'),
   ];
+
+  lines: Line[] = [
+    {
+      color: 'red',
+      cssClass: null,
+      data: null,
+      name: 'Red',
+      tooltipConfig: null,
+      points: [
+        new Point(2017, 10),
+        new Point(2018, 15),
+        new Point(2019, 7),
+        new Point(2020, 12),
+      ]
+    },
+    {
+      color: 'blue',
+      cssClass: null,
+      data: null,
+      name: 'Blue',
+      tooltipConfig: null,
+      points: [
+        new Point(2017, 5),
+        new Point(2018, 9),
+        new Point(2019, 22),
+        new Point(2020, 1),
+      ]
+    },
+    {
+      color: 'green',
+      cssClass: null,
+      data: null,
+      name: 'Green',
+      tooltipConfig: null,
+      points: [
+        new Point(2017, 1),
+        new Point(2019, 12),
+        new Point(2020, 15),
+      ]
+    },
+    {
+      color: 'orange',
+      cssClass: null,
+      data: null,
+      name: 'Orange',
+      tooltipConfig: null,
+      points: [
+        new Point(2017, -6),
+        new Point(2018, 0),
+        new Point(2019, 11),
+        new Point(2020, 16),
+      ]
+    }
+  ]
 
   constructor() {}
 
