@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DlBarChartModule, DlLegendModule, Value, IChartItem, ChartOrientation } from 'dl-chart';
 import { DocDetailModule } from '../../shared/docdetail';
+import { PropertyTableModule, PropertyElement } from '../../shared/propertytable';
+import { PropertyTableValues  } from "../../shared/propertytable.values";
 
 @Component({
   selector: 'app-barchart',
@@ -68,6 +70,25 @@ export class BarChart implements OnInit {
     this.objectHover = event;
   }
 
+  propertiesChart: PropertyElement[] = [
+    {name: 'chartid: string', description: 'Unique Chart id'},
+    {name: 'values: Value[]', description: 'Values to show in the Chart'},
+    {name: 'orientation?: ChartOrientation', description: 'orientation for the Chart value Axis'},
+    {name: 'barOffset?: number', description: 'offset between the chart Bars'},
+    {name: 'steps?: number', description: 'number of steps in the scale Axis'},
+    {name: 'leftScaleAxis?: boolean', description: 'show the left scale Axis'},
+    {name: 'rightScaleAxis?: boolean', description: 'show the right scale Axis'},
+    {name: 'hideSelectLine?: boolean', description: 'hides the line when a Bar is selected'},
+  ];
+
+  eventChart: PropertyElement[] = [
+    {name: '(valueSelect) = $event: IChartItem', description: 'Item was selected'},
+    {name: '(valueDeselect) = $event: IChartItem', description: 'Item was deselect'},
+    {name: '(valueChange) = $event: IChartItem', description: 'Item hovered'},
+  ];
+
+  propTable: PropertyTableValues = new PropertyTableValues()
+
 }
 
 @NgModule({
@@ -81,7 +102,8 @@ export class BarChart implements OnInit {
     MatInputModule,
     MatSelectModule,
     MatCheckboxModule,
-    DocDetailModule
+    DocDetailModule,
+    PropertyTableModule
   ],
   exports: [BarChart],
   declarations: [BarChart],

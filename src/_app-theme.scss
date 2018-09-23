@@ -7,6 +7,7 @@
 @import './app/pages/barchart/barchart-theme';
 @import './app/pages/linechart/linechart-theme';
 @import './app/shared/docdetail/docdetail-theme';
+@import './app/shared/propertytable/propertytable-theme';
 
 // Styles for the docs app that are based on the current theme.
 @mixin material-docs-app-theme($theme) {
@@ -40,4 +41,5 @@
   @include piechart-page-theme($theme);
   @include linechart-page-theme($theme);
   @include doc-detail-theme($theme);
+  @include property-table-theme($theme);
 }

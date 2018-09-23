@@ -234,7 +234,38 @@
   ...
       </div>
       <div api-content>
-  ...
+          <br>
+          <h2>API reference for Line Chart</h2>
+          <pre>import {{ '{' }} DlLineChartModule {{ '}' }}  from "dl-chart";</pre>
+          <h3>DlPieChart</h3>
+          <p>Wrapper for the Line Chart</p>
+          <p>Selector: <span><pre style="display:inline">dl-line-chart</pre></span></p>
+          <p>Exported as: <span><pre style="display:inline">DlLineChartModule</pre></span></p>
+          <h4>Properties</h4>
+          <app-property-table [dataSource]="propertiesChart"></app-property-table>
+          <h4>Events</h4>
+          <app-property-table [dataSource]="eventChart"></app-property-table>
+          <br>
+          <hr>
+          <h3>Datatypes</h3>
+          <h4>Line : IValue</h4>
+          <app-property-table [dataSource]="propTable.typesLine"></app-property-table>
+          <h4>Point : IValue</h4>
+          <app-property-table [dataSource]="propTable.typesPoint"></app-property-table>
+          <h4>TooltipConfiguration : ITextConfiguration</h4>
+          <app-property-table [dataSource]="propTable.typesTooltip"></app-property-table>
+          <br>
+          <hr>
+          <h3>Interfaces</h3>
+          <h4>IValue</h4>
+          <app-property-table [dataSource]="propTable.interfaceValue"></app-property-table>
+          <h4>IChartItem</h4>
+          <app-property-table [dataSource]="propTable.interfaceChartItem"></app-property-table>
+          <h4>ITextConfiguration</h4>
+          <app-property-table [dataSource]="propTable.interfaceTextConfig"></app-property-table>
+          <h3>Enums</h3>
+          <h4>ChartOrientation</h4>
+          <app-property-table [dataSource]="propTable.enumsChartOrientation"></app-property-table>
       </div>
     </app-doc-detail>
 </div>

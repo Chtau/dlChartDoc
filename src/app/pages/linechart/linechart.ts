@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DlLegendModule, Value, IChartItem, ChartOrientation, DlLineChartModule, Point, Line } from 'dl-chart';
 import { DocDetailModule } from '../../shared/docdetail';
+import { PropertyTableModule, PropertyElement } from '../../shared/propertytable';
+import { PropertyTableValues  } from "../../shared/propertytable.values";
 
 @Component({
   selector: 'app-linechart',
@@ -116,6 +118,28 @@ export class LineChart implements OnInit {
     this.objectHover = event;
   }
 
+  propertiesChart: PropertyElement[] = [
+    {name: 'chartid: string', description: 'Unique Chart id'},
+    {name: 'values: Line[]', description: 'Values to show in the Chart'},
+    {name: 'orientation?: ChartOrientation', description: 'orientation for the Chart value Axis'},
+    {name: 'steps?: number', description: 'number of steps in the scale Axis'},
+    {name: 'leftScaleAxis?: boolean', description: 'show the left scale Axis'},
+    {name: 'rightScaleAxis?: boolean', description: 'show the right scale Axis'},
+    {name: 'hideSelectionLines?: boolean', description: 'hides the line when a Point is selected'},
+    {name: 'hideRaster?: boolean', description: 'hides the background raster'},
+    {name: 'hideLines?: boolean', description: 'hide the value Lines'},
+    {name: 'hidePoints?: boolean', description: 'hide the value Points'},
+  ];
+
+  eventChart: PropertyElement[] = [
+    {name: '(valueSelect) = $event: IChartItem', description: 'Item was selected'},
+    {name: '(valueDeselect) = $event: IChartItem', description: 'Item was deselect'},
+    {name: '(valueChange) = $event: IChartItem', description: 'Item hovered'},
+  ];
+
+  propTable: PropertyTableValues = new PropertyTableValues()
+
+
 }
 
 @NgModule({
@@ -129,7 +153,8 @@ export class LineChart implements OnInit {
     MatInputModule,
     MatSelectModule,
     MatCheckboxModule,
-    DocDetailModule
+    DocDetailModule,
+    PropertyTableModule
   ],
   exports: [LineChart],
   declarations: [LineChart],

@@ -177,7 +177,35 @@
 ...
     </div>
     <div api-content>
-...
+      <br>
+      <h2>API reference for Pie/Donut Chart</h2>
+      <pre>import {{ '{' }} DlPieChartModule {{ '}' }}  from "dl-chart";</pre>
+      <h3>DlPieChart</h3>
+      <p>Wrapper for the Pie/Donut Chart</p>
+      <p>Selector: <span><pre style="display:inline">dl-pie-chart</pre></span></p>
+      <p>Exported as: <span><pre style="display:inline">DlPieChartModule</pre></span></p>
+      <h4>Properties</h4>
+      <app-property-table [dataSource]="propertiesChart"></app-property-table>
+      <h4>Events</h4>
+      <app-property-table [dataSource]="eventChart"></app-property-table>
+      <br>
+      <hr>
+      <h3>Datatypes</h3>
+      <h4>Value : IValue</h4>
+      <app-property-table [dataSource]="propTable.typesValue"></app-property-table>
+      <h4>DonutConfiguration</h4>
+      <app-property-table [dataSource]="propTable.typesDonutConfiguration"></app-property-table>
+      <h4>TooltipConfiguration : ITextConfiguration</h4>
+      <app-property-table [dataSource]="propTable.typesTooltip"></app-property-table>
+      <br>
+      <hr>
+      <h3>Interfaces</h3>
+      <h4>IValue</h4>
+      <app-property-table [dataSource]="propTable.interfaceValue"></app-property-table>
+      <h4>IChartItem</h4>
+      <app-property-table [dataSource]="propTable.interfaceChartItem"></app-property-table>
+      <h4>ITextConfiguration</h4>
+      <app-property-table [dataSource]="propTable.interfaceTextConfig"></app-property-table>
     </div>
   </app-doc-detail>
 

@@ -5,6 +5,8 @@ import { DlPieChartModule, Value, DlLegendModule, IChartItem, DonutConfiguration
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DocDetailModule } from '../../shared/docdetail';
+import { PropertyTableModule, PropertyElement } from '../../shared/propertytable';
+import { PropertyTableValues  } from "../../shared/propertytable.values";
 
 @Component({
   selector: 'app-piechart',
@@ -88,6 +90,21 @@ export class Piechart implements OnInit {
   onValueChange(event: IChartItem) {
     this.objectHover = event;
   }
+
+  propertiesChart: PropertyElement[] = [
+    {name: 'chartid: string', description: 'Unique Chart id'},
+    {name: 'values: Value[]', description: 'Values to show in the Chart'},
+    {name: 'donutConfiguration?: DonutConfiguration', description: 'Configuration for the Donut Style'},
+  ];
+
+  eventChart: PropertyElement[] = [
+    {name: '(valueSelect) = $event: IChartItem', description: 'Item was selected'},
+    {name: '(valueDeselect) = $event: IChartItem', description: 'Item was deselect'},
+    {name: '(valueChange) = $event: IChartItem', description: 'Item hovered'},
+  ];
+
+  propTable: PropertyTableValues = new PropertyTableValues()
+
 }
 
 @NgModule({
@@ -101,7 +118,8 @@ export class Piechart implements OnInit {
     DlLegendModule, 
     MatInputModule, 
     MatCheckboxModule,
-    DocDetailModule
+    DocDetailModule,
+    PropertyTableModule
   ],
   exports: [Piechart],
   providers: [
