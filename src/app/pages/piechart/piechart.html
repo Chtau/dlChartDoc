@@ -36,18 +36,122 @@
       </div>
     </div>
   </div>
-  <div class="docs-content-row">
-    <div>
-      <div class="json-output">
-        <p>Selected Object (JSON):</p>
-        <pre>{{objectSelect | json}}</pre>
+  <mat-tab-group mat-stretch-tabs style="width: 80%;">
+    <mat-tab label="Chart">
+      <div class="docs-content-row">
+        <div>
+          <div class="json-output">
+            <p>Selected Object (JSON):</p>
+            <pre>{{objectSelect | json}}</pre>
+          </div>
+        </div>
+        <div class="docs-content-item">
+          <div class="json-output">
+            <p>Hover Object (JSON):</p>
+            <pre>{{objectHover | json}}</pre>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="docs-content-item">
-      <div class="json-output">
-        <p>Hover Object (JSON):</p>
-        <pre>{{objectHover | json}}</pre>
-      </div>
-    </div>
-  </div>
+    </mat-tab>
+    <mat-tab label="Example Code">
+        <div class="">
+            <mat-tab-group>
+              <mat-tab label="Html">
+                  <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(240, 240, 240); color: rgb(68, 68, 68);">&lt;dl-pie-chart 
+  [chartid]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"'pie-chart-demo'"</span> 
+  [<span class="hljs-keyword" style="font-weight: 700;">values</span>]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"filterValues"</span>
+  [donutConfiguration]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"donutConfig"</span>
+  (valueSelect)=<span class="hljs-string" style="color: rgb(136, 0, 0);">"onValueSelect($event)"</span>
+  (valueDeselect)=<span class="hljs-string" style="color: rgb(136, 0, 0);">"onValueDeselect($event)"</span>
+  (valueChange)=<span class="hljs-string" style="color: rgb(136, 0, 0);">"onValueChange($event)"</span>
+&gt;&lt;<span class="hljs-regexp" style="color: rgb(188, 96, 96);">/dl-pie-chart&gt;</span></pre>
+              </mat-tab>
+              <mat-tab label="TS">
+                  <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(240, 240, 240); color: rgb(68, 68, 68);"><span class="hljs-keyword" style="font-weight: 700;">export</span> <span class="hljs-keyword" style="font-weight: 700;">class</span> Piechart <span class="hljs-keyword" style="font-weight: 700;">implements</span> OnInit &#123;
+
+  hideChartHoverEffect: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">boolean</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
+  hideChartSelectEffect: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">boolean</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
+
+  useDonutStyle: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">boolean</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
+  donutSize: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">number</span> = <span class="hljs-number" style="color: rgb(136, 0, 0);">.5</span>;
+  donutColor: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">string</span> = <span class="hljs-string" style="color: rgb(136, 0, 0);">'#ffffff'</span>;
+  donutConfig: DonutConfiguration = <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>;
+
+  onChangeUseDonut(event: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">any</span>) &#123;
+    <span class="hljs-keyword" style="font-weight: 700;">this</span>.recreateDonutConfig();
+  &#125;
+
+  onChangeDonutSize(event: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">any</span>) &#123;
+    <span class="hljs-keyword" style="font-weight: 700;">this</span>.recreateDonutConfig();
+  &#125;
+
+  onChangeDonutColor(event: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">any</span>) &#123;
+    <span class="hljs-keyword" style="font-weight: 700;">this</span>.recreateDonutConfig();
+  &#125;
+
+  recreateDonutConfig() &#123;
+    <span class="hljs-keyword" style="font-weight: 700;">if</span> (<span class="hljs-keyword" style="font-weight: 700;">this</span>.useDonutStyle) &#123;
+      <span class="hljs-keyword" style="font-weight: 700;">this</span>.donutConfig = &#123;
+        color: <span class="hljs-keyword" style="font-weight: 700;">this</span>.donutColor,
+        size: <span class="hljs-keyword" style="font-weight: 700;">this</span>.donutSize
+      &#125;
+    &#125; <span class="hljs-keyword" style="font-weight: 700;">else</span> &#123;
+      <span class="hljs-keyword" style="font-weight: 700;">this</span>.donutConfig = <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>;
+    &#125;
+  &#125;
+
+  values: Value[] = [
+    <span class="hljs-keyword" style="font-weight: 700;">new</span> Value(<span class="hljs-string" style="color: rgb(136, 0, 0);">'Red'</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">5</span>, <span class="hljs-string" style="color: rgb(136, 0, 0);">'Red'</span>),
+    <span class="hljs-keyword" style="font-weight: 700;">new</span> Value(<span class="hljs-string" style="color: rgb(136, 0, 0);">'Blue'</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">3</span>, <span class="hljs-string" style="color: rgb(136, 0, 0);">'Blue'</span>),
+    <span class="hljs-keyword" style="font-weight: 700;">new</span> Value(<span class="hljs-string" style="color: rgb(136, 0, 0);">'Green'</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">10</span>, <span class="hljs-string" style="color: rgb(136, 0, 0);">'Green'</span>),
+    <span class="hljs-keyword" style="font-weight: 700;">new</span> Value(<span class="hljs-string" style="color: rgb(136, 0, 0);">'Orange'</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">3</span>, <span class="hljs-string" style="color: rgb(136, 0, 0);">'Orange'</span>),
+    <span class="hljs-keyword" style="font-weight: 700;">new</span> Value(<span class="hljs-string" style="color: rgb(136, 0, 0);">'Yellow'</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">7</span>, <span class="hljs-string" style="color: rgb(136, 0, 0);">'Yellow'</span>),
+  ];
+
+  filterValue: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">string</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>;
+
+  <span class="hljs-keyword" style="font-weight: 700;">get</span> filterValues(): Value[] &#123;
+    <span class="hljs-keyword" style="font-weight: 700;">if</span> (<span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue === <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span> || <span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue === <span class="hljs-string" style="color: rgb(136, 0, 0);">''</span>) &#123;
+      <span class="hljs-keyword" style="font-weight: 700;">return</span> <span class="hljs-keyword" style="font-weight: 700;">this</span>.values;
+    &#125;
+    <span class="hljs-keyword" style="font-weight: 700;">return</span> <span class="hljs-keyword" style="font-weight: 700;">this</span>.values.filter(val =&gt; &#123;
+      <span class="hljs-keyword" style="font-weight: 700;">if</span> (val.name.toLowerCase().endsWith(<span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue.toLowerCase()) 
+      || val.name.toLowerCase().startsWith(<span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue.toLowerCase())
+      || val.value.toString() === <span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue ) &#123;
+        <span class="hljs-keyword" style="font-weight: 700;">return</span> <span class="hljs-literal" style="color: rgb(120, 169, 96);">true</span>;
+      &#125;
+      <span class="hljs-keyword" style="font-weight: 700;">return</span> <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
+    &#125;);
+  &#125;
+
+  objectSelect: IChartItem = <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>;
+  objectHover: IChartItem = <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>;
+
+  <span class="hljs-keyword" style="font-weight: 700;">constructor</span>() &#123;&#125;
+
+  ngOnInit(): <span class="hljs-built_in" style="color: rgb(57, 115, 0);">void</span> &#123;
+    
+  &#125;
+
+  onValueSelect(event: IChartItem) &#123;
+    <span class="hljs-keyword" style="font-weight: 700;">this</span>.objectSelect = event;
+  &#125;
+
+  onValueDeselect(event: IChartItem) &#123;
+    <span class="hljs-keyword" style="font-weight: 700;">this</span>.objectSelect = <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>;
+  &#125;
+
+  onValueChange(event: IChartItem) &#123;
+    <span class="hljs-keyword" style="font-weight: 700;">this</span>.objectHover = event;
+  &#125;
+&#125;</pre>
+              </mat-tab>
+              <mat-tab label="CSS">...</mat-tab>
+            </mat-tab-group>
+          </div>
+    </mat-tab>
+    <mat-tab label="API"> Content 3 </mat-tab>
+  </mat-tab-group>
+  
+
 </div>

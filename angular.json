@@ -54,7 +54,11 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "dlChartDoc:build:production"
+              "browserTarget": "dlChartDoc:build:production",
+              "optimization": true,
+              "sourceMap": false,
+              "aot": true,
+              "vendorChunk": false
             }
           }
         },

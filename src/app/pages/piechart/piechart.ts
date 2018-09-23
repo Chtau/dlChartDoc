@@ -1,5 +1,5 @@
 import {Component, NgModule, OnInit} from '@angular/core';
-import {MatButtonModule, MatInputModule, MatCheckboxModule} from '@angular/material';
+import {MatButtonModule, MatInputModule, MatCheckboxModule, MatTabsModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
 import { DlPieChartModule, Value, DlLegendModule, IChartItem, DonutConfiguration } from "dl-chart";
 import { FormsModule } from '@angular/forms';
@@ -94,6 +94,7 @@ export class Piechart implements OnInit {
     CommonModule, 
     FormsModule, 
     MatButtonModule, 
+    MatTabsModule,
     RouterModule, 
     DlPieChartModule, 
     DlLegendModule, 
