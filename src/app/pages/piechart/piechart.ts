@@ -4,6 +4,7 @@ import {RouterModule} from '@angular/router';
 import { DlPieChartModule, Value, DlLegendModule, IChartItem, DonutConfiguration } from "dl-chart";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { DocDetailModule } from '../../shared/docdetail';
 
 @Component({
   selector: 'app-piechart',
@@ -99,7 +100,8 @@ export class Piechart implements OnInit {
     DlPieChartModule, 
     DlLegendModule, 
     MatInputModule, 
-    MatCheckboxModule
+    MatCheckboxModule,
+    DocDetailModule
   ],
   exports: [Piechart],
   providers: [

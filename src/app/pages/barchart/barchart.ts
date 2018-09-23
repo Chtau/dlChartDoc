@@ -4,6 +4,7 @@ import {RouterModule} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DlBarChartModule, DlLegendModule, Value, IChartItem, ChartOrientation } from 'dl-chart';
+import { DocDetailModule } from '../../shared/docdetail';
 
 @Component({
   selector: 'app-barchart',
@@ -79,7 +80,8 @@ export class BarChart implements OnInit {
     DlLegendModule, 
     MatInputModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    DocDetailModule
   ],
   exports: [BarChart],
   declarations: [BarChart],

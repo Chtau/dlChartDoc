@@ -1,0 +1,25 @@
+<mat-tab-group mat-stretch-tabs>
+    <mat-tab label="Chart">
+      <div class="docs-content-row">
+        <ng-content select="[chart-content]"></ng-content>
+      </div>
+    </mat-tab>
+    <mat-tab label="Example Code">
+        <div class="">
+            <mat-tab-group>
+              <mat-tab label="Html">
+                  <ng-content select="[code-html]"></ng-content>
+              </mat-tab>
+              <mat-tab label="TS">
+                  <ng-content select="[code-ts]"></ng-content>
+              </mat-tab>
+              <mat-tab label="CSS">
+                  <ng-content select="[code-css]"></ng-content>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+    </mat-tab>
+    <mat-tab label="API">
+        <ng-content select="[api-content]"></ng-content>
+    </mat-tab>
+  </mat-tab-group>

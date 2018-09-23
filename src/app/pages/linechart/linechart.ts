@@ -4,6 +4,7 @@ import {RouterModule} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DlLegendModule, Value, IChartItem, ChartOrientation, DlLineChartModule, Point, Line } from 'dl-chart';
+import { DocDetailModule } from '../../shared/docdetail';
 
 @Component({
   selector: 'app-linechart',
@@ -127,7 +128,8 @@ export class LineChart implements OnInit {
     DlLegendModule, 
     MatInputModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    DocDetailModule
   ],
   exports: [LineChart],
   declarations: [LineChart],

@@ -36,28 +36,24 @@
       </div>
     </div>
   </div>
-  <mat-tab-group mat-stretch-tabs style="width: 80%;">
-    <mat-tab label="Chart">
-      <div class="docs-content-row">
-        <div>
-          <div class="json-output">
-            <p>Selected Object (JSON):</p>
-            <pre>{{objectSelect | json}}</pre>
-          </div>
-        </div>
-        <div class="docs-content-item">
-          <div class="json-output">
-            <p>Hover Object (JSON):</p>
-            <pre>{{objectHover | json}}</pre>
-          </div>
+
+  <app-doc-detail  style="width: 80%;">
+    <div chart-content class="docs-content-row">
+      <div>
+        <div class="json-output">
+          <p>Selected Object (JSON):</p>
+          <pre>{{objectSelect | json}}</pre>
         </div>
       </div>
-    </mat-tab>
-    <mat-tab label="Example Code">
-        <div class="">
-            <mat-tab-group>
-              <mat-tab label="Html">
-                  <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(240, 240, 240); color: rgb(68, 68, 68);">&lt;dl-pie-chart 
+      <div class="docs-content-item">
+        <div class="json-output">
+          <p>Hover Object (JSON):</p>
+          <pre>{{objectHover | json}}</pre>
+        </div>
+      </div>
+    </div>
+    <div code-html>
+        <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(240, 240, 240); color: rgb(68, 68, 68);">&lt;dl-pie-chart 
   [chartid]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"'pie-chart-demo'"</span> 
   [<span class="hljs-keyword" style="font-weight: 700;">values</span>]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"filterValues"</span>
   [donutConfiguration]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"donutConfig"</span>
@@ -65,9 +61,21 @@
   (valueDeselect)=<span class="hljs-string" style="color: rgb(136, 0, 0);">"onValueDeselect($event)"</span>
   (valueChange)=<span class="hljs-string" style="color: rgb(136, 0, 0);">"onValueChange($event)"</span>
 &gt;&lt;<span class="hljs-regexp" style="color: rgb(188, 96, 96);">/dl-pie-chart&gt;</span></pre>
-              </mat-tab>
-              <mat-tab label="TS">
-                  <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(240, 240, 240); color: rgb(68, 68, 68);"><span class="hljs-keyword" style="font-weight: 700;">export</span> <span class="hljs-keyword" style="font-weight: 700;">class</span> Piechart <span class="hljs-keyword" style="font-weight: 700;">implements</span> OnInit &#123;
+    </div>
+    <div code-ts>
+        <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(240, 240, 240); color: rgb(68, 68, 68);"><span class="hljs-keyword" style="font-weight: 700;">import</span> &#123;Component, NgModule, OnInit&#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/core'</span>;
+<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123;MatButtonModule, MatInputModule, MatCheckboxModule, MatTabsModule&#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/material'</span>;
+<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123;RouterModule&#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/router'</span>;
+<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; DlPieChartModule, Value, DlLegendModule, IChartItem, DonutConfiguration &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">"dl-chart"</span>;
+<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; FormsModule &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/forms'</span>;
+<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; CommonModule &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/common'</span>;
+
+@Component(&#123;
+  selector: <span class="hljs-string" style="color: rgb(136, 0, 0);">'app-piechart'</span>,
+  templateUrl: <span class="hljs-string" style="color: rgb(136, 0, 0);">'./piechart.html'</span>,
+  styleUrls: [<span class="hljs-string" style="color: rgb(136, 0, 0);">'./piechart.scss'</span>]
+&#125;)
+<span class="hljs-keyword" style="font-weight: 700;">export</span> <span class="hljs-keyword" style="font-weight: 700;">class</span> Piechart <span class="hljs-keyword" style="font-weight: 700;">implements</span> OnInit &#123;
 
   hideChartHoverEffect: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">boolean</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
   hideChartSelectEffect: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">boolean</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
@@ -144,14 +152,33 @@
   onValueChange(event: IChartItem) &#123;
     <span class="hljs-keyword" style="font-weight: 700;">this</span>.objectHover = event;
   &#125;
-&#125;</pre>
-              </mat-tab>
-              <mat-tab label="CSS">...</mat-tab>
-            </mat-tab-group>
-          </div>
-    </mat-tab>
-    <mat-tab label="API"> Content 3 </mat-tab>
-  </mat-tab-group>
-  
+&#125;
+
+@NgModule(&#123;
+  imports: [ 
+    CommonModule, 
+    FormsModule, 
+    MatButtonModule, 
+    MatTabsModule,
+    RouterModule, 
+    DlPieChartModule, 
+    DlLegendModule, 
+    MatInputModule, 
+    MatCheckboxModule
+  ],
+  exports: [Piechart],
+  providers: [
+  ],
+  declarations: [Piechart],
+&#125;)
+<span class="hljs-keyword" style="font-weight: 700;">export</span> <span class="hljs-keyword" style="font-weight: 700;">class</span> PiechartModule &#123;&#125;</pre>
+    </div>
+    <div code-css>
+...
+    </div>
+    <div api-content>
+...
+    </div>
+  </app-doc-detail>
 
 </div>

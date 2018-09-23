@@ -57,18 +57,185 @@
       </div>  
     </div>
   </div>
-  <div class="docs-content-row">
-    <div>
-      <div class="json-output">
-        <p>Selected Object (JSON):</p>
-        <pre>{{objectSelect | json}}</pre>
+
+  <app-doc-detail  style="width: 80%;">
+      <div chart-content class="docs-content-row">
+        <div>
+          <div class="json-output">
+            <p>Selected Object (JSON):</p>
+            <pre>{{objectSelect | json}}</pre>
+          </div>
+        </div>
+        <div class="docs-content-item">
+          <div class="json-output">
+            <p>Hover Object (JSON):</p>
+            <pre>{{objectHover | json}}</pre>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="docs-content-item">
-      <div class="json-output">
-        <p>Hover Object (JSON):</p>
-        <pre>{{objectHover | json}}</pre>
+      <div code-html>
+          <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(240, 240, 240); color: rgb(68, 68, 68);">&lt;dl-line-chart 
+  [chartid]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"'line-chart-demo'"</span> 
+  [values]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"filterValues"</span> 
+  (valueSelect)=<span class="hljs-string" style="color: rgb(136, 0, 0);">"onValueSelect($event)"</span>
+  (valueDeselect)=<span class="hljs-string" style="color: rgb(136, 0, 0);">"onValueDeselect($event)"</span>
+  (valueChange)=<span class="hljs-string" style="color: rgb(136, 0, 0);">"onValueChange($event)"</span>
+  [orientation]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"selectedOrientation"</span>
+  [steps]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"scaleSteps"</span>
+  [leftScaleAxis]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"leftScaleAxis"</span>
+  [rightScaleAxis]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"rightScaleAxis"</span>
+  [hideSelectionLines]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"hideSelectLine"</span>
+
+  [hideRaster]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"hideRaster"</span>
+  [hideLines]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"hideLines"</span>
+  [hidePoints]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"hidePoints"</span>
+&gt;&lt;/dl-line-chart&gt;</pre>
       </div>
-    </div>
-  </div>
+      <div code-ts>
+          <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(240, 240, 240); color: rgb(68, 68, 68);"><span class="hljs-keyword" style="font-weight: 700;">import</span> &#123;Component, NgModule, OnInit&#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/core'</span>;
+<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123;MatButtonModule, MatInputModule, MatSelectModule, MatCheckboxModule&#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/material'</span>;
+<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123;RouterModule&#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/router'</span>;
+<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; CommonModule &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/common'</span>;
+<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; FormsModule &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/forms'</span>;
+<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; DlLegendModule, Value, IChartItem, ChartOrientation, DlLineChartModule, Point, Line &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'dl-chart'</span>;
+<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; DocDetailModule &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'../../shared/docdetail'</span>;
+
+@Component(&#123;
+  selector: <span class="hljs-string" style="color: rgb(136, 0, 0);">'app-linechart'</span>,
+  templateUrl: <span class="hljs-string" style="color: rgb(136, 0, 0);">'./linechart.html'</span>,
+  styleUrls: [<span class="hljs-string" style="color: rgb(136, 0, 0);">'./linechart.scss'</span>]
+&#125;)
+<span class="hljs-keyword" style="font-weight: 700;">export</span> <span class="hljs-keyword" style="font-weight: 700;">class</span> LineChart <span class="hljs-keyword" style="font-weight: 700;">implements</span> OnInit &#123;
+
+  selectedOrientation: ChartOrientation = ChartOrientation.Bottom;
+  barOffset: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">number</span> = <span class="hljs-number" style="color: rgb(136, 0, 0);">13</span>;
+  scaleSteps: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">number</span> = <span class="hljs-number" style="color: rgb(136, 0, 0);">10</span>;
+  leftScaleAxis: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">boolean</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">true</span>;
+  rightScaleAxis: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">boolean</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
+  hideSelectLine: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">boolean</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
+  hideRaster: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">boolean</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
+  hideLines: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">boolean</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
+  hidePoints: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">boolean</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
+
+  hideChartHoverEffect: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">boolean</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
+  hideChartSelectEffect: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">boolean</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
+
+  lines: Line[] = [
+    &#123;
+      color: <span class="hljs-string" style="color: rgb(136, 0, 0);">'red'</span>,
+      cssClass: <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>,
+      data: <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>,
+      name: <span class="hljs-string" style="color: rgb(136, 0, 0);">'Red'</span>,
+      tooltipConfig: <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>,
+      points: [
+        <span class="hljs-keyword" style="font-weight: 700;">new</span> Point(<span class="hljs-number" style="color: rgb(136, 0, 0);">2017</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">10</span>),
+        <span class="hljs-keyword" style="font-weight: 700;">new</span> Point(<span class="hljs-number" style="color: rgb(136, 0, 0);">2018</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">15</span>),
+        <span class="hljs-keyword" style="font-weight: 700;">new</span> Point(<span class="hljs-number" style="color: rgb(136, 0, 0);">2019</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">7</span>),
+        <span class="hljs-keyword" style="font-weight: 700;">new</span> Point(<span class="hljs-number" style="color: rgb(136, 0, 0);">2020</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">12</span>),
+      ]
+    &#125;,
+    &#123;
+      color: <span class="hljs-string" style="color: rgb(136, 0, 0);">'blue'</span>,
+      cssClass: <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>,
+      data: <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>,
+      name: <span class="hljs-string" style="color: rgb(136, 0, 0);">'Blue'</span>,
+      tooltipConfig: <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>,
+      points: [
+        <span class="hljs-keyword" style="font-weight: 700;">new</span> Point(<span class="hljs-number" style="color: rgb(136, 0, 0);">2017</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">5</span>),
+        <span class="hljs-keyword" style="font-weight: 700;">new</span> Point(<span class="hljs-number" style="color: rgb(136, 0, 0);">2018</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">9</span>),
+        <span class="hljs-keyword" style="font-weight: 700;">new</span> Point(<span class="hljs-number" style="color: rgb(136, 0, 0);">2019</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">22</span>),
+        <span class="hljs-keyword" style="font-weight: 700;">new</span> Point(<span class="hljs-number" style="color: rgb(136, 0, 0);">2020</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">1</span>),
+      ]
+    &#125;,
+    &#123;
+      color: <span class="hljs-string" style="color: rgb(136, 0, 0);">'green'</span>,
+      cssClass: <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>,
+      data: <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>,
+      name: <span class="hljs-string" style="color: rgb(136, 0, 0);">'Green'</span>,
+      tooltipConfig: <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>,
+      points: [
+        <span class="hljs-keyword" style="font-weight: 700;">new</span> Point(<span class="hljs-number" style="color: rgb(136, 0, 0);">2017</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">1</span>),
+        <span class="hljs-keyword" style="font-weight: 700;">new</span> Point(<span class="hljs-number" style="color: rgb(136, 0, 0);">2019</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">12</span>),
+        <span class="hljs-keyword" style="font-weight: 700;">new</span> Point(<span class="hljs-number" style="color: rgb(136, 0, 0);">2020</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">15</span>),
+      ]
+    &#125;,
+    &#123;
+      color: <span class="hljs-string" style="color: rgb(136, 0, 0);">'orange'</span>,
+      cssClass: <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>,
+      data: <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>,
+      name: <span class="hljs-string" style="color: rgb(136, 0, 0);">'Orange'</span>,
+      tooltipConfig: <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>,
+      points: [
+        <span class="hljs-keyword" style="font-weight: 700;">new</span> Point(<span class="hljs-number" style="color: rgb(136, 0, 0);">2017</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">-6</span>),
+        <span class="hljs-keyword" style="font-weight: 700;">new</span> Point(<span class="hljs-number" style="color: rgb(136, 0, 0);">2018</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">0</span>),
+        <span class="hljs-keyword" style="font-weight: 700;">new</span> Point(<span class="hljs-number" style="color: rgb(136, 0, 0);">2019</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">11</span>),
+        <span class="hljs-keyword" style="font-weight: 700;">new</span> Point(<span class="hljs-number" style="color: rgb(136, 0, 0);">2020</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">16</span>),
+      ]
+    &#125;
+  ]
+
+  filterValue: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">string</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>;
+
+  <span class="hljs-keyword" style="font-weight: 700;">get</span> filterValues(): Line[] &#123;
+    <span class="hljs-keyword" style="font-weight: 700;">if</span> (<span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue === <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span> || <span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue === <span class="hljs-string" style="color: rgb(136, 0, 0);">''</span>) &#123;
+      <span class="hljs-keyword" style="font-weight: 700;">return</span> <span class="hljs-keyword" style="font-weight: 700;">this</span>.lines;
+    &#125;
+    <span class="hljs-keyword" style="font-weight: 700;">return</span> <span class="hljs-keyword" style="font-weight: 700;">this</span>.lines.filter(val =&gt; &#123;
+      <span class="hljs-keyword" style="font-weight: 700;">if</span> (val.name.toLowerCase().endsWith(<span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue.toLowerCase()) 
+      || val.name.toLowerCase().startsWith(<span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue.toLowerCase())) &#123;
+        <span class="hljs-keyword" style="font-weight: 700;">return</span> <span class="hljs-literal" style="color: rgb(120, 169, 96);">true</span>;
+      &#125;
+      <span class="hljs-keyword" style="font-weight: 700;">return</span> <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
+    &#125;);
+  &#125;
+
+  objectSelect: IChartItem = <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>;
+  objectHover: IChartItem = <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>;
+
+  <span class="hljs-keyword" style="font-weight: 700;">constructor</span>() &#123;&#125;
+
+  ngOnInit(): <span class="hljs-built_in" style="color: rgb(57, 115, 0);">void</span> &#123;
+    
+  &#125;
+
+  onValueSelect(event: IChartItem) &#123;
+    <span class="hljs-keyword" style="font-weight: 700;">this</span>.objectSelect = event;
+  &#125;
+
+  onValueDeselect(event: IChartItem) &#123;
+    <span class="hljs-keyword" style="font-weight: 700;">this</span>.objectSelect = <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>;
+  &#125;
+
+  onValueChange(event: IChartItem) &#123;
+    <span class="hljs-keyword" style="font-weight: 700;">this</span>.objectHover = event;
+  &#125;
+
+&#125;
+
+@NgModule(&#123;
+  imports: [ 
+    CommonModule, 
+    FormsModule, 
+    MatButtonModule, 
+    RouterModule, 
+    DlLineChartModule, 
+    DlLegendModule, 
+    MatInputModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    DocDetailModule
+  ],
+  exports: [LineChart],
+  declarations: [LineChart],
+&#125;)
+<span class="hljs-keyword" style="font-weight: 700;">export</span> <span class="hljs-keyword" style="font-weight: 700;">class</span> LineChartModule &#123;&#125;
+</pre>
+      </div>
+      <div code-css>
+  ...
+      </div>
+      <div api-content>
+  ...
+      </div>
+    </app-doc-detail>
 </div>
