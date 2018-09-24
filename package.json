@@ -9,6 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "stats": "ng build --prod --stats-json && npx webpack-bundle-analyzer dist/dlChartDoc/stats.json",
+    "stat-build": "ng build --aot --buildOptimizer=true --optimization --stats-json",
     "host": "ngh"
   },
   "private": true,
