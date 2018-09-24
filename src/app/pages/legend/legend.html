@@ -1,0 +1,157 @@
+<div class="docs-content" style="margin-top: 50px;min-height: 1200px;">
+  <div class="docs-content-row">
+    <div class="docs-content-item">
+        <dl-chart-legend 
+        [chartid]="'bar-chart-demo'"
+        [hideChartHoverEffect]="hideChartHoverEffect"
+        [hideChartSelectEffect]="hideChartSelectEffect"
+        (legendClick)="onLegendClick($event)"
+      ></dl-chart-legend>
+        
+    </div>
+    <div class="docs-content-item">
+      <mat-form-field class="input-full-width">
+        <input matInput placeholder="Chart name/value filter" [(ngModel)]="filterValue">
+      </mat-form-field>
+      <h4>Legend options</h4>
+      <div class="input-filters">
+        <mat-checkbox [(ngModel)]="hideChartHoverEffect">Hide Chart hover effect</mat-checkbox>
+        <mat-checkbox [(ngModel)]="hideChartSelectEffect">Hide Chart select effect</mat-checkbox>
+      </div>
+      <br>
+      <hr>
+      <div style="height: 150px;">
+        <dl-bar-chart 
+          [chartid]="'bar-chart-demo'" 
+          [values]="filterValues" 
+        ></dl-bar-chart>
+      </div>  
+    </div>
+  </div>
+
+
+  <app-doc-detail [firstTabTitle]="'Legend'" style="width: 80%;">
+      <div chart-content class="docs-content-row">
+        <div>
+          <div class="json-output">
+            <p>Selected Object (JSON):</p>
+            <pre>{{objectSelect | json}}</pre>
+          </div>
+        </div>
+      </div>
+      <div code-html>
+          <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(240, 240, 240); color: rgb(68, 68, 68);">&lt;dl-chart-legend 
+  [chartid]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"'bar-chart-demo'"</span>
+  [hideChartHoverEffect]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"hideChartHoverEffect"</span>
+  [hideChartSelectEffect]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"hideChartSelectEffect"</span>
+  (legendClick)=<span class="hljs-string" style="color: rgb(136, 0, 0);">"onLegendClick($event)"</span>
+&gt;&lt;/dl-chart-legend&gt;</pre>
+      </div>
+      <div code-ts>
+          <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(240, 240, 240); color: rgb(68, 68, 68);"><span class="hljs-keyword" style="font-weight: 700;">import</span> &#123;Component, NgModule, OnInit&#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/core'</span>;
+<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123;MatButtonModule, MatInputModule, MatSelectModule, MatCheckboxModule&#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/material'</span>;
+<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123;RouterModule&#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/router'</span>;
+<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; CommonModule &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/common'</span>;
+<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; FormsModule &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/forms'</span>;
+<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; DlBarChartModule, DlLegendModule, Value, IChartItem, ChartOrientation &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'dl-chart'</span>;
+<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; DocDetailModule &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'../../shared/docdetail'</span>;
+<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; PropertyTableModule, PropertyElement &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'../../shared/propertytable'</span>;
+<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; PropertyTableValues  &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">"../../shared/propertytable.values"</span>;
+<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; IValue &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'dl-chart/lib/models/value.interface'</span>;
+
+@Component(&#123;
+  selector: <span class="hljs-string" style="color: rgb(136, 0, 0);">'app-legend'</span>,
+  templateUrl: <span class="hljs-string" style="color: rgb(136, 0, 0);">'./legend.html'</span>,
+  styleUrls: [<span class="hljs-string" style="color: rgb(136, 0, 0);">'./legend.scss'</span>]
+&#125;)
+<span class="hljs-keyword" style="font-weight: 700;">export</span> <span class="hljs-keyword" style="font-weight: 700;">class</span> Legend <span class="hljs-keyword" style="font-weight: 700;">implements</span> OnInit &#123;
+
+  values: Value[] = [
+    <span class="hljs-keyword" style="font-weight: 700;">new</span> Value(<span class="hljs-string" style="color: rgb(136, 0, 0);">'Red'</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">5</span>, <span class="hljs-string" style="color: rgb(136, 0, 0);">'Red'</span>),
+    <span class="hljs-keyword" style="font-weight: 700;">new</span> Value(<span class="hljs-string" style="color: rgb(136, 0, 0);">'Blue'</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">3</span>, <span class="hljs-string" style="color: rgb(136, 0, 0);">'Blue'</span>),
+    <span class="hljs-keyword" style="font-weight: 700;">new</span> Value(<span class="hljs-string" style="color: rgb(136, 0, 0);">'Green'</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">10</span>, <span class="hljs-string" style="color: rgb(136, 0, 0);">'Green'</span>),
+    <span class="hljs-keyword" style="font-weight: 700;">new</span> Value(<span class="hljs-string" style="color: rgb(136, 0, 0);">'Orange'</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">3</span>, <span class="hljs-string" style="color: rgb(136, 0, 0);">'Orange'</span>),
+    <span class="hljs-keyword" style="font-weight: 700;">new</span> Value(<span class="hljs-string" style="color: rgb(136, 0, 0);">'Yellow'</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">7</span>, <span class="hljs-string" style="color: rgb(136, 0, 0);">'Yellow'</span>),
+  ];
+
+  filterValue: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">string</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>;
+
+  <span class="hljs-keyword" style="font-weight: 700;">get</span> filterValues(): Value[] &#123;
+    <span class="hljs-keyword" style="font-weight: 700;">if</span> (<span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue === <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span> || <span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue === <span class="hljs-string" style="color: rgb(136, 0, 0);">''</span>) &#123;
+      <span class="hljs-keyword" style="font-weight: 700;">return</span> <span class="hljs-keyword" style="font-weight: 700;">this</span>.values;
+    &#125;
+    <span class="hljs-keyword" style="font-weight: 700;">return</span> <span class="hljs-keyword" style="font-weight: 700;">this</span>.values.filter(val =&gt; &#123;
+      <span class="hljs-keyword" style="font-weight: 700;">if</span> (val.name.toLowerCase().endsWith(<span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue.toLowerCase()) 
+      || val.name.toLowerCase().startsWith(<span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue.toLowerCase())
+      || val.value.toString() === <span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue ) &#123;
+        <span class="hljs-keyword" style="font-weight: 700;">return</span> <span class="hljs-literal" style="color: rgb(120, 169, 96);">true</span>;
+      &#125;
+      <span class="hljs-keyword" style="font-weight: 700;">return</span> <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
+    &#125;);
+  &#125;
+
+  objectSelect: IValue = <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>;
+
+  <span class="hljs-keyword" style="font-weight: 700;">constructor</span>() &#123;&#125;
+
+  ngOnInit(): <span class="hljs-built_in" style="color: rgb(57, 115, 0);">void</span> &#123;
+    
+  &#125;
+
+  onLegendClick(event: IValue) &#123;
+    <span class="hljs-keyword" style="font-weight: 700;">this</span>.objectSelect = event;
+  &#125;
+
+&#125;
+
+@NgModule(&#123;
+  imports: [ 
+    CommonModule, 
+    FormsModule, 
+    MatButtonModule, 
+    RouterModule, 
+    DlBarChartModule, 
+    DlLegendModule, 
+    MatInputModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    DocDetailModule,
+    PropertyTableModule
+  ],
+  exports: [Legend],
+  declarations: [Legend],
+&#125;)
+<span class="hljs-keyword" style="font-weight: 700;">export</span> <span class="hljs-keyword" style="font-weight: 700;">class</span> LegendModule &#123;&#125;
+</pre>
+      </div>
+      <div code-css>
+  ...
+      </div>
+      <div api-content>
+          <br>
+          <h2>API reference for Legend</h2>
+          <pre>import {{ '{' }} DlLegendModule {{ '}' }}  from "dl-chart";</pre>
+          <h3>DlLegendModule</h3>
+          <p>Wrapper for the Legend</p>
+          <p>Selector: <span><pre style="display:inline">dl-chart-legend</pre></span></p>
+          <p>Exported as: <span><pre style="display:inline">DlLegendModule</pre></span></p>
+          <h4>Properties</h4>
+          <app-property-table [dataSource]="propertiesChart"></app-property-table>
+          <h4>Events</h4>
+          <app-property-table [dataSource]="eventChart"></app-property-table>
+          <br>
+          <hr>
+          <h3>Datatypes</h3>
+          <h4>TooltipConfiguration : ITextConfiguration</h4>
+          <app-property-table [dataSource]="propTable.typesTooltip"></app-property-table>
+          <br>
+          <hr>
+          <h3>Interfaces</h3>
+          <h4>IValue</h4>
+          <app-property-table [dataSource]="propTable.interfaceValue"></app-property-table>
+          <h4>ITextConfiguration</h4>
+          <app-property-table [dataSource]="propTable.interfaceTextConfig"></app-property-table>
+      </div>
+    </app-doc-detail>
+
+</div>

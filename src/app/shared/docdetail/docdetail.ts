@@ -1,4 +1,4 @@
-import {Component, NgModule} from '@angular/core';
+import {Component, NgModule, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatButtonModule, MatMenuModule, MatIconModule, MatTabsModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
@@ -10,6 +10,11 @@ import {RouterModule} from '@angular/router';
 })
 export class DocDetail {
 
+  currentFirstTabTitle: string = "Chart";
+  @Input()
+  set firstTabTitle(val: string) {
+    this.currentFirstTabTitle = val;
+  }
 }
 
 @NgModule({

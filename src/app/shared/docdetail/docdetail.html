@@ -1,5 +1,5 @@
 <mat-tab-group mat-stretch-tabs>
-    <mat-tab label="Chart">
+    <mat-tab [label]="currentFirstTabTitle">
       <div class="docs-content-row">
         <ng-content select="[chart-content]"></ng-content>
       </div>

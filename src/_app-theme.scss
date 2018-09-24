@@ -6,6 +6,7 @@
 @import './app/pages/piechart/piechart-theme';
 @import './app/pages/barchart/barchart-theme';
 @import './app/pages/linechart/linechart-theme';
+@import './app/pages/legend/legend-theme';
 @import './app/shared/docdetail/docdetail-theme';
 @import './app/shared/propertytable/propertytable-theme';
 
@@ -42,4 +43,5 @@
   @include linechart-page-theme($theme);
   @include doc-detail-theme($theme);
   @include property-table-theme($theme);
+  @include legend-page-theme($theme);
 }

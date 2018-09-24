@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BarChartModule } from './pages/barchart';
 import { PiechartModule } from './pages/piechart';
 import { LineChartModule } from './pages/linechart';
+import { LegendModule } from './pages/legend';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { LineChartModule } from './pages/linechart';
     HomepageModule,
     BarChartModule,
     PiechartModule,
-    LineChartModule
+    LineChartModule,
+    LegendModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
