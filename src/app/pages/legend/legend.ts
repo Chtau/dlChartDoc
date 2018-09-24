@@ -16,6 +16,9 @@ import { IValue } from 'dl-chart/lib/models/value.interface';
 })
 export class Legend implements OnInit {
 
+  hideChartHoverEffect: boolean = false;
+  hideChartSelectEffect: boolean = false;
+
   values: Value[] = [
     new Value('Red', 5, 'Red'),
     new Value('Blue', 3, 'Blue'),
