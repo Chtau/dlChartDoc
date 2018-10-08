@@ -1,7 +1,7 @@
 import {Component, NgModule, OnInit} from '@angular/core';
 import {MatButtonModule, MatInputModule, MatCheckboxModule, MatTabsModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
-import { DlPieChartModule, Value, DlLegendModule, IChartItem, DonutConfiguration } from "dl-chart";
+import { DlPieChartModule, Value, DlLegendModule, IChartItem } from "dl-chart";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DocDetailModule } from '../../shared/docdetail';
@@ -19,31 +19,9 @@ export class Piechart implements OnInit {
   hideChartSelectEffect: boolean = false;
 
   useDonutStyle: boolean = false;
-  donutSize: number = .5;
-  donutColor: string = '#ffffff';
-  donutConfig: DonutConfiguration = null;
 
   onChangeUseDonut(event: any) {
-    this.recreateDonutConfig();
-  }
-
-  onChangeDonutSize(event: any) {
-    this.recreateDonutConfig();
-  }
-
-  onChangeDonutColor(event: any) {
-    this.recreateDonutConfig();
-  }
-
-  recreateDonutConfig() {
-    if (this.useDonutStyle) {
-      this.donutConfig = {
-        color: this.donutColor,
-        size: this.donutSize
-      }
-    } else {
-      this.donutConfig = null;
-    }
+    this.useDonutStyle = !this.useDonutStyle;
   }
 
   values: Value[] = [

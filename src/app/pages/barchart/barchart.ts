@@ -16,7 +16,7 @@ import { PropertyTableValues  } from "../../shared/propertytable.values";
 export class BarChart implements OnInit {
 
   selectedOrientation: ChartOrientation = ChartOrientation.Bottom;
-  barOffset: number = 13;
+  barOffset: number = 5;
   scaleSteps: number = 10;
   leftScaleAxis: boolean = true;
   rightScaleAxis: boolean = false;

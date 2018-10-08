@@ -4,7 +4,7 @@
         <dl-pie-chart 
           [chartid]="'pie-chart-demo'" 
           [values]="filterValues"
-          [donutConfiguration]="donutConfig"
+          [donut]="useDonutStyle"
           (valueSelect)="onValueSelect($event)"
           (valueDeselect)="onValueDeselect($event)"
           (valueChange)="onValueChange($event)"
@@ -17,14 +17,7 @@
         </mat-form-field>
         <h4>Donut options</h4>
       <div class="input-filters">
-        <mat-checkbox [(ngModel)]="useDonutStyle" (ngModelChange)="onChangeDonutColor($event)">Activate Donut Style</mat-checkbox>
-        <br>
-        <mat-form-field>
-          <input matInput type="number" placeholder="Donut radius Size" [(ngModel)]="donutSize" (ngModelChange)="onChangeDonutColor($event)">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput type="color" placeholder="Donut background Color" [(ngModel)]="donutColor" (ngModelChange)="onChangeDonutColor($event)">
-        </mat-form-field>
+        <mat-checkbox [(ngModel)]="useDonutStyle">Activate Donut Style</mat-checkbox>
       </div>
       </div>
       <div>

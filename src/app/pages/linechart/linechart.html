@@ -7,7 +7,6 @@
           (valueSelect)="onValueSelect($event)"
           (valueDeselect)="onValueDeselect($event)"
           (valueChange)="onValueChange($event)"
-          [orientation]="selectedOrientation"
           [steps]="scaleSteps"
           [leftScaleAxis]="leftScaleAxis"
           [rightScaleAxis]="rightScaleAxis"
@@ -26,14 +25,6 @@
       <div class="input-filters">
         <mat-form-field>
           <input matInput type="number" placeholder="Scale steps" [(ngModel)]="scaleSteps">
-        </mat-form-field>
-        <mat-form-field>
-          <mat-select placeholder="Bar orientation" [(ngModel)]="selectedOrientation">
-            <mat-option [value]="0">Bottom</mat-option>
-            <mat-option [value]="1">Left</mat-option>
-            <mat-option [value]="2">Right</mat-option>
-            <mat-option [value]="3">Top</mat-option>
-          </mat-select>
         </mat-form-field>
         <mat-checkbox [(ngModel)]="hideSelectLine">Hide selection Line</mat-checkbox>
         <mat-checkbox [(ngModel)]="leftScaleAxis">Left Scale Axis</mat-checkbox>

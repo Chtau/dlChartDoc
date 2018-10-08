@@ -17,7 +17,7 @@ export class LineChart implements OnInit {
 
   selectedOrientation: ChartOrientation = ChartOrientation.Bottom;
   barOffset: number = 13;
-  scaleSteps: number = 10;
+  scaleSteps: number = 14;
   leftScaleAxis: boolean = true;
   rightScaleAxis: boolean = false;
   hideSelectLine: boolean = false;

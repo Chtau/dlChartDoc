@@ -20,3 +20,7 @@ $accent:  mat-palette($mat-deep-orange, 700, A100, A400);
 $theme: mat-light-theme($primary, $accent);
 @include angular-material-theme($theme);
 @include material-docs-app-theme($theme);
+
+@import '~dl-chart/lib/dl-chart.theme';
+$chart-theme: light-chart-theme();
+@include chart-theme($chart-theme);

@@ -1,7 +1,7 @@
 import {Component, NgModule, OnInit} from '@angular/core';
 import {MatButtonModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
-import { Value, TooltipConfiguration, DonutConfiguration, Point, Line } from 'dl-chart';
+import { Value, TooltipConfiguration, Point, Line } from 'dl-chart';
 import { DlChartModule } from "dl-chart";
 
 @Component({
@@ -10,11 +10,6 @@ import { DlChartModule } from "dl-chart";
   styleUrls: ['./homepage.scss']
 })
 export class Homepage implements OnInit {
-
-  donutConfig: DonutConfiguration = {
-    color: 'white',
-    size: .5
-  };
 
   values1: Value[] = [
     new Value('Red', 5, 'Red'),
