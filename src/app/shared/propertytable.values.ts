@@ -52,8 +52,7 @@ export class PropertyTableValues {
     {name: 'id: string', description: 'Element id'},
     {name: 'color: string', description: 'Element color'},
     {name: 'sourceItem: IValue', description: 'source input item'},
-    {name: 'calculatedPercent: number', description: 'percentage value for the item'},
-    {name: 'allowActivate: boolean', description: 'if the item is allowed to activate (hover / select)'},
+    {name: 'calculatedPercent: number', description: 'percentage value for the item'}
   ];
 
   interfaceTextConfig: PropertyElement[] = [
