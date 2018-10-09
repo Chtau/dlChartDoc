@@ -1,5 +1,5 @@
 import {Component, NgModule, OnInit} from '@angular/core';
-import {MatButtonModule, MatInputModule, MatCheckboxModule, MatTabsModule} from '@angular/material';
+import {MatButtonModule, MatInputModule, MatCheckboxModule, MatTabsModule, MatSliderModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
 import { DlPieChartModule, Value, DlLegendModule, IChartItem } from "dl-chart";
 import { FormsModule } from '@angular/forms';
@@ -20,11 +20,7 @@ export class Piechart implements OnInit {
   hideChartHoverEffect: boolean = false;
   hideChartSelectEffect: boolean = false;
 
-  useDonutStyle: boolean = false;
-
-  onChangeUseDonut(event: any) {
-    this.useDonutStyle = !this.useDonutStyle;
-  }
+  donutRadius: number = 0;
 
   values: Value[] = [
     new Value('Red', 5, 'Red'),
@@ -74,7 +70,7 @@ export class Piechart implements OnInit {
   propertiesChart: PropertyElement[] = [
     {name: 'chartid: string', description: 'Unique Chart id'},
     {name: 'values: Value[]', description: 'Values to show in the Chart'},
-    {name: 'donut?: boolean', description: 'activates the Donut Style for the Chart'},
+    {name: 'donut?: number', description: 'sets the size of the donut radius (must be between 0 - 1)'},
   ];
 
   eventChart: PropertyElement[] = [
@@ -84,8 +80,7 @@ export class Piechart implements OnInit {
   ];
 
   propertiesTheme: PropertyElement[] = [
-    {name: 'donut-color', description: 'Color for the Donut hole'},
-    {name: 'donut-radius', description: 'Donut hole radius'},
+    {name: 'donut-color', description: 'Color for the Donut hole'}
   ];
 
   propTable: PropertyTableValues = new PropertyTableValues()
@@ -98,6 +93,7 @@ export class Piechart implements OnInit {
     FormsModule, 
     MatButtonModule, 
     MatTabsModule,
+    MatSliderModule,
     RouterModule, 
     DlPieChartModule, 
     DlLegendModule, 

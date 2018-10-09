@@ -5,7 +5,7 @@
         <dl-pie-chart 
           [chartid]="'pie-chart-demo'" 
           [values]="filterValues"
-          [donut]="useDonutStyle"
+          [donut]="donutRadius"
           (valueSelect)="onValueSelect($event)"
           (valueDeselect)="onValueDeselect($event)"
           (valueChange)="onValueChange($event)"
@@ -18,9 +18,7 @@
           <input matInput placeholder="Chart live filter" [(ngModel)]="filterValue">
         </mat-form-field>
         <h4>Donut options</h4>
-      <div class="input-filters">
-        <mat-checkbox [(ngModel)]="useDonutStyle">Activate Donut Style</mat-checkbox>
-      </div>
+        <mat-slider min="0" max="1" step="0.1" [(ngModel)]="donutRadius"></mat-slider>
       </div>
       <div>
         <h4>Legend options</h4>
@@ -100,7 +98,7 @@
       <p>predefined light Theme</p>
       <h4>@function dark-pie-chart-theme()</h4>
       <p>predefined dark Theme</p>
-      <h4>@function pie-theme($donut-color, $donut-radius)</h4>
+      <h4>@function pie-theme($donut-color)</h4>
       <p>custom Theme function</p>
       <app-property-table [dataSource]="propertiesTheme"></app-property-table>
       <h4>@mixin pie-chart-theme($theme)</h4>
