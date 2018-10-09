@@ -40,93 +40,14 @@
           </div>
         </div>
       </div>
-      <div code-html>
-          <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(240, 240, 240); color: rgb(68, 68, 68);">&lt;dl-chart-legend 
-  [chartid]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"'bar-chart-demo'"</span>
-  [hideChartHoverEffect]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"hideChartHoverEffect"</span>
-  [hideChartSelectEffect]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"hideChartSelectEffect"</span>
-  (legendClick)=<span class="hljs-string" style="color: rgb(136, 0, 0);">"onLegendClick($event)"</span>
-&gt;&lt;/dl-chart-legend&gt;</pre>
+      <div code-html style="height: 800px;padding-bottom: 20px;">
+          <github-gist [gistId]="'Chtau/2c744de562a256f7c082844d648c1e6c'"></github-gist>
       </div>
-      <div code-ts>
-          <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(240, 240, 240); color: rgb(68, 68, 68);"><span class="hljs-keyword" style="font-weight: 700;">import</span> &#123;Component, NgModule, OnInit&#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/core'</span>;
-<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123;MatButtonModule, MatInputModule, MatSelectModule, MatCheckboxModule&#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/material'</span>;
-<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123;RouterModule&#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/router'</span>;
-<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; CommonModule &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/common'</span>;
-<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; FormsModule &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/forms'</span>;
-<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; DlBarChartModule, DlLegendModule, Value, IChartItem, ChartOrientation &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'dl-chart'</span>;
-<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; DocDetailModule &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'../../shared/docdetail'</span>;
-<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; PropertyTableModule, PropertyElement &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'../../shared/propertytable'</span>;
-<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; PropertyTableValues  &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">"../../shared/propertytable.values"</span>;
-<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; IValue &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'dl-chart/lib/models/value.interface'</span>;
-
-@Component(&#123;
-  selector: <span class="hljs-string" style="color: rgb(136, 0, 0);">'app-legend'</span>,
-  templateUrl: <span class="hljs-string" style="color: rgb(136, 0, 0);">'./legend.html'</span>,
-  styleUrls: [<span class="hljs-string" style="color: rgb(136, 0, 0);">'./legend.scss'</span>]
-&#125;)
-<span class="hljs-keyword" style="font-weight: 700;">export</span> <span class="hljs-keyword" style="font-weight: 700;">class</span> Legend <span class="hljs-keyword" style="font-weight: 700;">implements</span> OnInit &#123;
-
-  values: Value[] = [
-    <span class="hljs-keyword" style="font-weight: 700;">new</span> Value(<span class="hljs-string" style="color: rgb(136, 0, 0);">'Red'</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">5</span>, <span class="hljs-string" style="color: rgb(136, 0, 0);">'Red'</span>),
-    <span class="hljs-keyword" style="font-weight: 700;">new</span> Value(<span class="hljs-string" style="color: rgb(136, 0, 0);">'Blue'</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">3</span>, <span class="hljs-string" style="color: rgb(136, 0, 0);">'Blue'</span>),
-    <span class="hljs-keyword" style="font-weight: 700;">new</span> Value(<span class="hljs-string" style="color: rgb(136, 0, 0);">'Green'</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">10</span>, <span class="hljs-string" style="color: rgb(136, 0, 0);">'Green'</span>),
-    <span class="hljs-keyword" style="font-weight: 700;">new</span> Value(<span class="hljs-string" style="color: rgb(136, 0, 0);">'Orange'</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">3</span>, <span class="hljs-string" style="color: rgb(136, 0, 0);">'Orange'</span>),
-    <span class="hljs-keyword" style="font-weight: 700;">new</span> Value(<span class="hljs-string" style="color: rgb(136, 0, 0);">'Yellow'</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">7</span>, <span class="hljs-string" style="color: rgb(136, 0, 0);">'Yellow'</span>),
-  ];
-
-  filterValue: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">string</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>;
-
-  <span class="hljs-keyword" style="font-weight: 700;">get</span> filterValues(): Value[] &#123;
-    <span class="hljs-keyword" style="font-weight: 700;">if</span> (<span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue === <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span> || <span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue === <span class="hljs-string" style="color: rgb(136, 0, 0);">''</span>) &#123;
-      <span class="hljs-keyword" style="font-weight: 700;">return</span> <span class="hljs-keyword" style="font-weight: 700;">this</span>.values;
-    &#125;
-    <span class="hljs-keyword" style="font-weight: 700;">return</span> <span class="hljs-keyword" style="font-weight: 700;">this</span>.values.filter(val =&gt; &#123;
-      <span class="hljs-keyword" style="font-weight: 700;">if</span> (val.name.toLowerCase().endsWith(<span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue.toLowerCase()) 
-      || val.name.toLowerCase().startsWith(<span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue.toLowerCase())
-      || val.value.toString() === <span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue ) &#123;
-        <span class="hljs-keyword" style="font-weight: 700;">return</span> <span class="hljs-literal" style="color: rgb(120, 169, 96);">true</span>;
-      &#125;
-      <span class="hljs-keyword" style="font-weight: 700;">return</span> <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
-    &#125;);
-  &#125;
-
-  objectSelect: IValue = <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>;
-
-  <span class="hljs-keyword" style="font-weight: 700;">constructor</span>() &#123;&#125;
-
-  ngOnInit(): <span class="hljs-built_in" style="color: rgb(57, 115, 0);">void</span> &#123;
-    
-  &#125;
-
-  onLegendClick(event: IValue) &#123;
-    <span class="hljs-keyword" style="font-weight: 700;">this</span>.objectSelect = event;
-  &#125;
-
-&#125;
-
-@NgModule(&#123;
-  imports: [ 
-    CommonModule, 
-    FormsModule, 
-    MatButtonModule, 
-    RouterModule, 
-    DlBarChartModule, 
-    DlLegendModule, 
-    MatInputModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    DocDetailModule,
-    PropertyTableModule
-  ],
-  exports: [Legend],
-  declarations: [Legend],
-&#125;)
-<span class="hljs-keyword" style="font-weight: 700;">export</span> <span class="hljs-keyword" style="font-weight: 700;">class</span> LegendModule &#123;&#125;
-</pre>
+      <div code-ts style="height: 800px;padding-bottom: 20px;">
+          <github-gist [gistId]="'Chtau/64d5e435f3b94b0b18189d7c2d751c35'"></github-gist>
       </div>
-      <div code-css>
-  ...
+      <div code-css style="height: 800px;padding-bottom: 20px;">
+          <github-gist [gistId]="'Chtau/d29d69ceaa01d74a8be4c66a9def1965'"></github-gist>
       </div>
       <div api-content>
           <br>
@@ -152,6 +73,39 @@
           <app-property-table [dataSource]="propTable.interfaceValue"></app-property-table>
           <h4>ITextConfiguration</h4>
           <app-property-table [dataSource]="propTable.interfaceTextConfig"></app-property-table>
+          <br>
+          <hr>
+          <h3>Theme SCSS Legend</h3>
+          <p>
+            <span>Import <code>legend-chart-theme</code> or <code>chart-theme</code> into your <code>styles.scss</code>.</span>
+            <br>
+            <span>If you only import <code>legend-chart-theme</code> you also need <code>tooltip-chart-theme</code> for the Hover tooltip if not already imported.</span>
+            <br>
+            <span></span>
+          </p>
+          <p></p>
+          <pre>@import '~dl-chart/lib/legend/legend.theme';</pre>
+          <h4>@function light-legend-chart-theme()</h4>
+          <p>predefined light Theme</p>
+          <h4>@function dark-legend-chart-theme()</h4>
+          <p>predefined dark Theme</p>
+          <h4>@function legend-theme($border-color, $border-width, $border-style)</h4>
+          <p>custom Theme function</p>
+          <app-property-table [dataSource]="propertiesTheme"></app-property-table>
+          <h4>@mixin legend-chart-theme($theme)</h4>
+          <p>mixin to use a Theme</p>
+          <hr>
+          <h3>Theme SCSS Tooltip</h3>
+          <pre>@import '~dl-chart/lib/shared/tooltip.theme';</pre>
+          <h4>@function light-tooltip-chart-theme()</h4>
+          <p>predefined light Theme</p>
+          <h4>@function dark-tooltip-chart-theme()</h4>
+          <p>predefined dark Theme</p>
+          <h4>@function tooltip-theme($background-color, $foreground-color)</h4>
+          <p>custom Theme function</p>
+          <app-property-table [dataSource]="propTable.propertiesTooltipTheme"></app-property-table>
+          <h4>@mixin tooltip-chart-theme($theme)</h4>
+          <p>mixin to use a Theme</p>
       </div>
     </app-doc-detail>
 

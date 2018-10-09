@@ -8,6 +8,7 @@ import { DocDetailModule } from '../../shared/docdetail';
 import { PropertyTableModule, PropertyElement } from '../../shared/propertytable';
 import { PropertyTableValues  } from "../../shared/propertytable.values";
 import { IValue } from 'dl-chart/lib/models/value.interface';
+import { GithubGistModule } from '../../shared/gist.component';
 
 @Component({
   selector: 'app-legend',
@@ -65,6 +66,12 @@ export class Legend implements OnInit {
     {name: '(legendClick) = $event: IValue', description: 'Legend Item was clicked'},
   ];
 
+  propertiesTheme: PropertyElement[] = [
+    {name: 'border-color', description: 'Color of the Box border'},
+    {name: 'border-width', description: 'Box border width'},
+    {name: 'border-style', description: 'Box border style'},
+  ];
+
   propTable: PropertyTableValues = new PropertyTableValues()
 
 
@@ -82,7 +89,8 @@ export class Legend implements OnInit {
     MatSelectModule,
     MatCheckboxModule,
     DocDetailModule,
-    PropertyTableModule
+    PropertyTableModule,
+    GithubGistModule
   ],
   exports: [Legend],
   declarations: [Legend],
