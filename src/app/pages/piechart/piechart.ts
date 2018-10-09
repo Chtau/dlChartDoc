@@ -8,6 +8,8 @@ import { DocDetailModule } from '../../shared/docdetail';
 import { PropertyTableModule, PropertyElement } from '../../shared/propertytable';
 import { PropertyTableValues  } from "../../shared/propertytable.values";
 
+import { GithubGist } from '../../shared/gist.component';
+
 @Component({
   selector: 'app-piechart',
   templateUrl: './piechart.html',
@@ -97,11 +99,12 @@ export class Piechart implements OnInit {
     MatInputModule, 
     MatCheckboxModule,
     DocDetailModule,
-    PropertyTableModule
+    PropertyTableModule,
   ],
   exports: [Piechart],
   providers: [
+    
   ],
-  declarations: [Piechart],
+  declarations: [Piechart, GithubGist],
 })
 export class PiechartModule {}

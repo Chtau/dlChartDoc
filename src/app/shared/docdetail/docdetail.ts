@@ -1,6 +1,6 @@
-import {Component, NgModule, Input} from '@angular/core';
+import {Component, NgModule, Input, EventEmitter, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MatButtonModule, MatMenuModule, MatIconModule, MatTabsModule} from '@angular/material';
+import {MatButtonModule, MatMenuModule, MatIconModule, MatTabsModule, MatTabChangeEvent} from '@angular/material';
 import {RouterModule} from '@angular/router';
 
 @Component({
