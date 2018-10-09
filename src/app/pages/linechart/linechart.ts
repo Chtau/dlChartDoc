@@ -7,6 +7,7 @@ import { DlLegendModule, Value, IChartItem, ChartOrientation, DlLineChartModule,
 import { DocDetailModule } from '../../shared/docdetail';
 import { PropertyTableModule, PropertyElement } from '../../shared/propertytable';
 import { PropertyTableValues  } from "../../shared/propertytable.values";
+import { GithubGistModule } from '../../shared/gist.component';
 
 @Component({
   selector: 'app-linechart',
@@ -121,8 +122,8 @@ export class LineChart implements OnInit {
   propertiesChart: PropertyElement[] = [
     {name: 'chartid: string', description: 'Unique Chart id'},
     {name: 'values: Line[]', description: 'Values to show in the Chart'},
-    {name: 'orientation?: ChartOrientation', description: 'orientation for the Chart value Axis'},
     {name: 'steps?: number', description: 'number of steps in the scale Axis'},
+    {name: 'scaleLabel?: string', description: 'Text label for the Y Axis'},
     {name: 'leftScaleAxis?: boolean', description: 'show the left scale Axis'},
     {name: 'rightScaleAxis?: boolean', description: 'show the right scale Axis'},
     {name: 'hideSelectionLines?: boolean', description: 'hides the line when a Point is selected'},
@@ -135,6 +136,13 @@ export class LineChart implements OnInit {
     {name: '(valueSelect) = $event: IChartItem', description: 'Item was selected'},
     {name: '(valueDeselect) = $event: IChartItem', description: 'Item was deselect'},
     {name: '(valueChange) = $event: IChartItem', description: 'Item hovered'},
+  ];
+
+  propertiesTheme: PropertyElement[] = [
+    {name: 'line-color', description: 'Color of the Lines for the Axis'},
+    {name: 'text-color', description: 'Label text color'},
+    {name: 'raster-line-color', description: 'background raster color'},
+    {name: 'selection-line-color', description: 'selection line color'},
   ];
 
   propTable: PropertyTableValues = new PropertyTableValues()
@@ -154,7 +162,8 @@ export class LineChart implements OnInit {
     MatSelectModule,
     MatCheckboxModule,
     DocDetailModule,
-    PropertyTableModule
+    PropertyTableModule,
+    GithubGistModule
   ],
   exports: [LineChart],
   declarations: [LineChart],
