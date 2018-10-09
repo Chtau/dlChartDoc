@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ElementRef, ViewEncapsulation, AfterContentChecked } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, ViewEncapsulation, AfterContentChecked, NgModule } from '@angular/core';
 
 @Component({
   selector: 'github-gist',
@@ -38,3 +38,14 @@ export class GithubGist implements AfterContentChecked {
   }
 
 }
+
+@NgModule({
+  imports: [ 
+  ],
+  exports: [GithubGist],
+  providers: [
+    
+  ],
+  declarations: [GithubGist],
+})
+export class GithubGistModule {}

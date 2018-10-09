@@ -71,115 +71,14 @@
           </div>
         </div>
       </div>
-      <div code-html>
-          <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(240, 240, 240); color: rgb(68, 68, 68);">&lt;dl-bar-chart 
-  [chartid]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"'bar-chart-demo'"</span> 
-  [values]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"filterValues"</span> 
-  (valueSelect)=<span class="hljs-string" style="color: rgb(136, 0, 0);">"onValueSelect($event)"</span>
-  (valueDeselect)=<span class="hljs-string" style="color: rgb(136, 0, 0);">"onValueDeselect($event)"</span>
-  (valueChange)=<span class="hljs-string" style="color: rgb(136, 0, 0);">"onValueChange($event)"</span>
-  [orientation]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"selectedOrientation"</span>
-  [barOffset]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"barOffset"</span>
-  [steps]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"scaleSteps"</span>
-  [leftScaleAxis]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"leftScaleAxis"</span>
-  [rightScaleAxis]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"rightScaleAxis"</span>
-  [hideSelectLine]=<span class="hljs-string" style="color: rgb(136, 0, 0);">"hideSelectLine"</span>
-&gt;&lt;/dl-bar-chart&gt;</pre>
+      <div code-html style="height: 800px;padding-bottom: 20px;">
+          <github-gist [gistId]="'Chtau/7e8b1b41a5a29ff8b9140bd982a8fb2b'"></github-gist>
       </div>
-      <div code-ts>
-          <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(240, 240, 240); color: rgb(68, 68, 68);"><span class="hljs-keyword" style="font-weight: 700;">import</span> &#123;Component, NgModule, OnInit&#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/core'</span>;
-<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123;MatButtonModule, MatInputModule, MatSelectModule, MatCheckboxModule&#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/material'</span>;
-<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123;RouterModule&#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/router'</span>;
-<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; CommonModule &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/common'</span>;
-<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; FormsModule &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'@angular/forms'</span>;
-<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; DlBarChartModule, DlLegendModule, Value, IChartItem, ChartOrientation &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'dl-chart'</span>;
-<span class="hljs-keyword" style="font-weight: 700;">import</span> &#123; DocDetailModule &#125; from <span class="hljs-string" style="color: rgb(136, 0, 0);">'../../shared/docdetail'</span>;
-
-@Component(&#123;
-  selector: <span class="hljs-string" style="color: rgb(136, 0, 0);">'app-barchart'</span>,
-  templateUrl: <span class="hljs-string" style="color: rgb(136, 0, 0);">'./barchart.html'</span>,
-  styleUrls: [<span class="hljs-string" style="color: rgb(136, 0, 0);">'./barchart.scss'</span>]
-&#125;)
-<span class="hljs-keyword" style="font-weight: 700;">export</span> <span class="hljs-keyword" style="font-weight: 700;">class</span> BarChart <span class="hljs-keyword" style="font-weight: 700;">implements</span> OnInit &#123;
-
-  selectedOrientation: ChartOrientation = ChartOrientation.Bottom;
-  barOffset: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">number</span> = <span class="hljs-number" style="color: rgb(136, 0, 0);">13</span>;
-  scaleSteps: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">number</span> = <span class="hljs-number" style="color: rgb(136, 0, 0);">10</span>;
-  leftScaleAxis: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">boolean</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">true</span>;
-  rightScaleAxis: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">boolean</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
-  hideSelectLine: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">boolean</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
-
-  hideChartHoverEffect: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">boolean</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
-  hideChartSelectEffect: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">boolean</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
-
-  values: Value[] = [
-    <span class="hljs-keyword" style="font-weight: 700;">new</span> Value(<span class="hljs-string" style="color: rgb(136, 0, 0);">'Red'</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">5</span>, <span class="hljs-string" style="color: rgb(136, 0, 0);">'Red'</span>),
-    <span class="hljs-keyword" style="font-weight: 700;">new</span> Value(<span class="hljs-string" style="color: rgb(136, 0, 0);">'Blue'</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">3</span>, <span class="hljs-string" style="color: rgb(136, 0, 0);">'Blue'</span>),
-    <span class="hljs-keyword" style="font-weight: 700;">new</span> Value(<span class="hljs-string" style="color: rgb(136, 0, 0);">'Green'</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">10</span>, <span class="hljs-string" style="color: rgb(136, 0, 0);">'Green'</span>),
-    <span class="hljs-keyword" style="font-weight: 700;">new</span> Value(<span class="hljs-string" style="color: rgb(136, 0, 0);">'Orange'</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">3</span>, <span class="hljs-string" style="color: rgb(136, 0, 0);">'Orange'</span>),
-    <span class="hljs-keyword" style="font-weight: 700;">new</span> Value(<span class="hljs-string" style="color: rgb(136, 0, 0);">'Yellow'</span>, <span class="hljs-number" style="color: rgb(136, 0, 0);">7</span>, <span class="hljs-string" style="color: rgb(136, 0, 0);">'Yellow'</span>),
-  ];
-
-  filterValue: <span class="hljs-built_in" style="color: rgb(57, 115, 0);">string</span> = <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>;
-
-  <span class="hljs-keyword" style="font-weight: 700;">get</span> filterValues(): Value[] &#123;
-    <span class="hljs-keyword" style="font-weight: 700;">if</span> (<span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue === <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span> || <span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue === <span class="hljs-string" style="color: rgb(136, 0, 0);">''</span>) &#123;
-      <span class="hljs-keyword" style="font-weight: 700;">return</span> <span class="hljs-keyword" style="font-weight: 700;">this</span>.values;
-    &#125;
-    <span class="hljs-keyword" style="font-weight: 700;">return</span> <span class="hljs-keyword" style="font-weight: 700;">this</span>.values.filter(val =&gt; &#123;
-      <span class="hljs-keyword" style="font-weight: 700;">if</span> (val.name.toLowerCase().endsWith(<span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue.toLowerCase()) 
-      || val.name.toLowerCase().startsWith(<span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue.toLowerCase())
-      || val.value.toString() === <span class="hljs-keyword" style="font-weight: 700;">this</span>.filterValue ) &#123;
-        <span class="hljs-keyword" style="font-weight: 700;">return</span> <span class="hljs-literal" style="color: rgb(120, 169, 96);">true</span>;
-      &#125;
-      <span class="hljs-keyword" style="font-weight: 700;">return</span> <span class="hljs-literal" style="color: rgb(120, 169, 96);">false</span>;
-    &#125;);
-  &#125;
-
-  objectSelect: IChartItem = <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>;
-  objectHover: IChartItem = <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>;
-
-  <span class="hljs-keyword" style="font-weight: 700;">constructor</span>() &#123;&#125;
-
-  ngOnInit(): <span class="hljs-built_in" style="color: rgb(57, 115, 0);">void</span> &#123;
-    
-  &#125;
-
-  onValueSelect(event: IChartItem) &#123;
-    <span class="hljs-keyword" style="font-weight: 700;">this</span>.objectSelect = event;
-  &#125;
-
-  onValueDeselect(event: IChartItem) &#123;
-    <span class="hljs-keyword" style="font-weight: 700;">this</span>.objectSelect = <span class="hljs-literal" style="color: rgb(120, 169, 96);">null</span>;
-  &#125;
-
-  onValueChange(event: IChartItem) &#123;
-    <span class="hljs-keyword" style="font-weight: 700;">this</span>.objectHover = event;
-  &#125;
-
-&#125;
-
-@NgModule(&#123;
-  imports: [ 
-    CommonModule, 
-    FormsModule, 
-    MatButtonModule, 
-    RouterModule, 
-    DlBarChartModule, 
-    DlLegendModule, 
-    MatInputModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    DocDetailModule
-  ],
-  exports: [BarChart],
-  declarations: [BarChart],
-&#125;)
-<span class="hljs-keyword" style="font-weight: 700;">export</span> <span class="hljs-keyword" style="font-weight: 700;">class</span> BarChartModule &#123;&#125;
-</pre>
+      <div code-ts style="height: 800px;padding-bottom: 20px;">
+          <github-gist [gistId]="'Chtau/82ae3ef3554d73608e5a9edd9dd811ca'"></github-gist>
       </div>
-      <div code-css>
-  ...
+      <div code-css style="height: 800px;padding-bottom: 20px;">
+          <github-gist [gistId]="'Chtau/7ab4afae6b53d5b11dc79708d4725656'"></github-gist>
       </div>
       <div api-content>
           <br>
@@ -212,6 +111,39 @@
           <h3>Enums</h3>
           <h4>ChartOrientation</h4>
           <app-property-table [dataSource]="propTable.enumsChartOrientation"></app-property-table>
+          <br>
+          <hr>
+          <h3>Theme SCSS Bar</h3>
+          <p>
+            <span>Import <code>bar-chart-theme</code> or <code>chart-theme</code> into your <code>styles.scss</code>.</span>
+            <br>
+            <span>If you only import <code>bar-chart-theme</code> you also need <code>tooltip-chart-theme</code> for the Hover tooltip if not already imported.</span>
+            <br>
+            <span></span>
+          </p>
+          <p></p>
+          <pre>@import '~dl-chart/lib/bar-chart/bar-chart.theme';</pre>
+          <h4>@function light-bar-chart-theme()</h4>
+          <p>predefined light Theme</p>
+          <h4>@function dark-bar-chart-theme()</h4>
+          <p>predefined dark Theme</p>
+          <h4>@function bar-theme($line-color, $text-color, $ground-line-color, $selection-line-color, $select-stroke-width, $selection-stroke-dasharray)</h4>
+          <p>custom Theme function</p>
+          <app-property-table [dataSource]="propertiesTheme"></app-property-table>
+          <h4>@mixin bar-chart-theme($theme)</h4>
+          <p>mixin to use a Theme</p>
+          <hr>
+          <h3>Theme SCSS Tooltip</h3>
+          <pre>@import '~dl-chart/lib/shared/tooltip.theme';</pre>
+          <h4>@function light-tooltip-chart-theme()</h4>
+          <p>predefined light Theme</p>
+          <h4>@function dark-tooltip-chart-theme()</h4>
+          <p>predefined dark Theme</p>
+          <h4>@function tooltip-theme($background-color, $foreground-color)</h4>
+          <p>custom Theme function</p>
+          <app-property-table [dataSource]="propTable.propertiesTooltipTheme"></app-property-table>
+          <h4>@mixin tooltip-chart-theme($theme)</h4>
+          <p>mixin to use a Theme</p>
       </div>
     </app-doc-detail>
 

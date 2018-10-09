@@ -9,6 +9,7 @@ export class PropertyTableValues {
     {name: 'cssClass?: string', description: 'additional CSS class for the Element'},
     {name: 'tooltipConfig?: TooltipConfiguration', description: 'Tooltip configuration for this Element'},
     {name: 'data?: any', description: 'additonal custom data'},
+    {name: 'shortName?: string', description: 'If a short Name is set it will be used only for the X Axis Label instead of the Name'},
   ];
 
   typesDonutConfiguration: PropertyElement[] = [

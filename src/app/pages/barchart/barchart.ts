@@ -7,6 +7,7 @@ import { DlBarChartModule, DlLegendModule, Value, IChartItem, ChartOrientation }
 import { DocDetailModule } from '../../shared/docdetail';
 import { PropertyTableModule, PropertyElement } from '../../shared/propertytable';
 import { PropertyTableValues  } from "../../shared/propertytable.values";
+import { GithubGistModule } from '../../shared/gist.component';
 
 @Component({
   selector: 'app-barchart',
@@ -74,7 +75,7 @@ export class BarChart implements OnInit {
     {name: 'chartid: string', description: 'Unique Chart id'},
     {name: 'values: Value[]', description: 'Values to show in the Chart'},
     {name: 'orientation?: ChartOrientation', description: 'orientation for the Chart value Axis'},
-    {name: 'barOffset?: number', description: 'offset between the chart Bars'},
+    {name: 'barOffset?: number', description: 'offset between the chart Bars in percent Chart width'},
     {name: 'steps?: number', description: 'number of steps in the scale Axis'},
     {name: 'leftScaleAxis?: boolean', description: 'show the left scale Axis'},
     {name: 'rightScaleAxis?: boolean', description: 'show the right scale Axis'},
@@ -85,6 +86,15 @@ export class BarChart implements OnInit {
     {name: '(valueSelect) = $event: IChartItem', description: 'Item was selected'},
     {name: '(valueDeselect) = $event: IChartItem', description: 'Item was deselect'},
     {name: '(valueChange) = $event: IChartItem', description: 'Item hovered'},
+  ];
+
+  propertiesTheme: PropertyElement[] = [
+    {name: 'line-color', description: 'Color of the Lines for the Axis'},
+    {name: 'text-color', description: 'Label text color'},
+    {name: 'ground-line-color', description: '0 value line color'},
+    {name: 'selection-line-color', description: 'selection line color'},
+    {name: 'select-stroke-width', description: 'selection line stroke width'},
+    {name: 'selection-stroke-dasharray', description: 'selection line stroke dasharray'}
   ];
 
   propTable: PropertyTableValues = new PropertyTableValues()
@@ -103,7 +113,8 @@ export class BarChart implements OnInit {
     MatSelectModule,
     MatCheckboxModule,
     DocDetailModule,
-    PropertyTableModule
+    PropertyTableModule,
+    GithubGistModule
   ],
   exports: [BarChart],
   declarations: [BarChart],
