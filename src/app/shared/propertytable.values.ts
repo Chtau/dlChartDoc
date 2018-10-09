@@ -67,4 +67,9 @@ export class PropertyTableValues {
     {name: 'Right: number = 2', description: 'value Axis is on the right side'},
     {name: 'Top: number = 3', description: 'value Axis is on the top'},
   ];
+
+  propertiesTooltipTheme: PropertyElement[] = [
+    {name: 'background-color', description: 'Tooltip background Color'},
+    {name: 'foreground-color', description: 'Tooltip foreground Color'},
+  ];
 }

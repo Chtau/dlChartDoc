@@ -73,8 +73,6 @@
       <h3>Datatypes</h3>
       <h4>Value : IValue</h4>
       <app-property-table [dataSource]="propTable.typesValue"></app-property-table>
-      <h4>DonutConfiguration</h4>
-      <app-property-table [dataSource]="propTable.typesDonutConfiguration"></app-property-table>
       <h4>TooltipConfiguration : ITextConfiguration</h4>
       <app-property-table [dataSource]="propTable.typesTooltip"></app-property-table>
       <br>
@@ -86,6 +84,39 @@
       <app-property-table [dataSource]="propTable.interfaceChartItem"></app-property-table>
       <h4>ITextConfiguration</h4>
       <app-property-table [dataSource]="propTable.interfaceTextConfig"></app-property-table>
+      <br>
+      <hr>
+      <h3>Theme SCSS Pie</h3>
+      <p>
+        <span>Import <code>pie-chart-theme</code> or <code>chart-theme</code> into your <code>styles.scss</code>.</span>
+        <br>
+        <span>If you only import <code>pie-chart-theme</code> you also need <code>tooltip-chart-theme</code> for the Hover tooltip if not already imported.</span>
+        <br>
+        <span></span>
+      </p>
+      <p></p>
+      <pre>@import '~dl-chart/lib/pie-chart/pie-chart.theme';</pre>
+      <h4>@function light-pie-chart-theme()</h4>
+      <p>predefined light Theme</p>
+      <h4>@function dark-pie-chart-theme()</h4>
+      <p>predefined dark Theme</p>
+      <h4>@function pie-theme($donut-color, $donut-radius)</h4>
+      <p>custom Theme function</p>
+      <app-property-table [dataSource]="propertiesTheme"></app-property-table>
+      <h4>@mixin pie-chart-theme($theme)</h4>
+      <p>mixin to use a Theme</p>
+      <hr>
+      <h3>Theme SCSS Tooltip</h3>
+      <pre>@import '~dl-chart/lib/shared/tooltip.theme';</pre>
+      <h4>@function light-tooltip-chart-theme()</h4>
+      <p>predefined light Theme</p>
+      <h4>@function dark-tooltip-chart-theme()</h4>
+      <p>predefined dark Theme</p>
+      <h4>@function tooltip-theme($background-color, $foreground-color)</h4>
+      <p>custom Theme function</p>
+      <app-property-table [dataSource]="propTable.propertiesTooltipTheme"></app-property-table>
+      <h4>@mixin tooltip-chart-theme($theme)</h4>
+      <p>mixin to use a Theme</p>
     </div>
   </app-doc-detail>
 

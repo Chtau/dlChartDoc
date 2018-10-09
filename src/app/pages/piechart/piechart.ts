@@ -74,13 +74,18 @@ export class Piechart implements OnInit {
   propertiesChart: PropertyElement[] = [
     {name: 'chartid: string', description: 'Unique Chart id'},
     {name: 'values: Value[]', description: 'Values to show in the Chart'},
-    {name: 'donutConfiguration?: DonutConfiguration', description: 'Configuration for the Donut Style'},
+    {name: 'donut?: boolean', description: 'activates the Donut Style for the Chart'},
   ];
 
   eventChart: PropertyElement[] = [
     {name: '(valueSelect) = $event: IChartItem', description: 'Item was selected'},
     {name: '(valueDeselect) = $event: IChartItem', description: 'Item was deselect'},
     {name: '(valueChange) = $event: IChartItem', description: 'Item hovered'},
+  ];
+
+  propertiesTheme: PropertyElement[] = [
+    {name: 'donut-color', description: 'Color for the Donut hole'},
+    {name: 'donut-radius', description: 'Donut hole radius'},
   ];
 
   propTable: PropertyTableValues = new PropertyTableValues()
