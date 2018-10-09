@@ -20,7 +20,9 @@
 <div class="docs-homepage-promo">
   <div class="docs-homepage-row">
     <div class="docs-homepage-promo-img">
-      <dl-pie-chart [chartid]="'test-chart'" [values]="values1"></dl-pie-chart>
+      <div style="height: 400px;width: 400px">
+        <dl-pie-chart [chartid]="'test-chart'" [values]="values1"></dl-pie-chart>
+      </div>
     </div>
     <div class="docs-homepage-promo-desc">
       <h2>Fast loading</h2>
@@ -29,7 +31,9 @@
   </div>
   <div class="docs-homepage-row docs-homepage-reverse-row">
     <div class="docs-homepage-promo-img">
-      <dl-bar-chart [chartid]="'test-chart-bar'" [scaleLabel]="'Demo Values'" [steps]="10" [values]="values1"></dl-bar-chart>
+      <div style="width:500px;height: 300px;">
+        <dl-bar-chart [chartid]="'test-chart-bar'" [scaleLabel]="'Demo Values'" [steps]="10" [values]="values1"></dl-bar-chart>
+      </div>
     </div>
     <div class="docs-homepage-promo-desc">
       <h2>TypeScript & Angular & SVG</h2>
@@ -38,11 +42,13 @@
   </div>
   <div class="docs-homepage-row">
     <div class="docs-homepage-promo-img">
-        <dl-line-chart 
-        [chartid]="'test-line-chart-1'" 
-        [values]="lines" 
-        [steps]="10"
-      ></dl-line-chart>
+      <div style="width:500px;height: 300px;">
+          <dl-line-chart 
+          [chartid]="'test-line-chart-1'" 
+          [values]="lines" 
+          [steps]="10"
+        ></dl-line-chart>
+      </div>
     </div>
     <div class="docs-homepage-promo-desc">
       <h2>Flexible</h2>
@@ -51,7 +57,9 @@
   </div>
   <div class="docs-homepage-row docs-homepage-reverse-row">
     <div class="docs-homepage-promo-img">
-      <dl-pie-chart [chartid]="'test-donut-chart-1'" [values]="values1" [donut]="true"></dl-pie-chart>
+      <div style="height: 400px;width: 400px">
+        <dl-pie-chart [chartid]="'test-donut-chart-1'" [values]="values1" [donut]="true"></dl-pie-chart>
+      </div>
     </div>
     <div class="docs-homepage-promo-desc">
       <h2>Legend module</h2>
