@@ -25,6 +25,7 @@ export class LineChart implements OnInit {
   hideRaster: boolean = false;
   hideLines: boolean = false;
   hidePoints: boolean = false;
+  hideLinesFiller: boolean = false;
 
   hideChartHoverEffect: boolean = false;
   hideChartSelectEffect: boolean = false;
