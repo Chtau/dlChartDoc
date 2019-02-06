@@ -129,6 +129,7 @@ export class LineChart implements OnInit {
     {name: 'hideSelectionLines?: boolean', description: 'hides the line when a Point is selected'},
     {name: 'hideRaster?: boolean', description: 'hides the background raster'},
     {name: 'hideLines?: boolean', description: 'hide the value Lines'},
+    {name: 'hideLinesFiller?: boolean', description: 'hide the filler element for Lines'},
     {name: 'hidePoints?: boolean', description: 'hide the value Points'},
   ];
 
