@@ -72,4 +72,9 @@ export class PropertyTableValues {
     {name: 'background-color', description: 'Tooltip background Color'},
     {name: 'foreground-color', description: 'Tooltip foreground Color'},
   ];
+
+  propertiesAxisTheme: PropertyElement[] = [
+    {name: 'line-color', description: 'Axis line color'},
+    {name: 'text-color', description: 'Text color'},
+  ];
 }

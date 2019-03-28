@@ -16,6 +16,7 @@
           [hideLines]="hideLines"
           [hideLinesFiller]="hideLinesFiller"
           [hidePoints]="hidePoints"
+          [hideTooltip]="hideTooltip"
         ></dl-line-chart>
     </div>
     <div class="docs-content-item">
@@ -34,6 +35,7 @@
         <mat-checkbox [(ngModel)]="hideLines">Hide Value lines</mat-checkbox>
         <mat-checkbox [(ngModel)]="hideLinesFiller">Hide Line filler</mat-checkbox>
         <mat-checkbox [(ngModel)]="hidePoints">Hide Value points</mat-checkbox>
+        <mat-checkbox [(ngModel)]="hideTooltip">Hide Chart tooltip</mat-checkbox>
       </div>
       <br>
       <hr>
@@ -137,6 +139,18 @@
           <p>custom Theme function</p>
           <app-property-table [dataSource]="propTable.propertiesTooltipTheme"></app-property-table>
           <h4>@mixin tooltip-chart-theme($theme)</h4>
+          <p>mixin to use a Theme</p>
+          <hr>
+          <h3>Theme SCSS Axis</h3>
+          <pre>@import '~dl-chart/lib/shared/axis.theme';</pre>
+          <h4>@function light-axis-chart-theme()</h4>
+          <p>predefined light Theme</p>
+          <h4>@function dark-axis-chart-theme()</h4>
+          <p>predefined dark Theme</p>
+          <h4>@function axis-theme($line-color, $text-color)</h4>
+          <p>custom Theme function</p>
+          <app-property-table [dataSource]="propTable.propertiesAxisTheme"></app-property-table>
+          <h4>@mixin axis-chart-theme($theme)</h4>
           <p>mixin to use a Theme</p>
       </div>
     </app-doc-detail>

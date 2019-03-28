@@ -26,6 +26,7 @@ export class LineChart implements OnInit {
   hideLines: boolean = false;
   hidePoints: boolean = false;
   hideLinesFiller: boolean = false;
+  hideTooltip: boolean = false;
 
   hideChartHoverEffect: boolean = false;
   hideChartSelectEffect: boolean = false;
@@ -132,6 +133,7 @@ export class LineChart implements OnInit {
     {name: 'hideLines?: boolean', description: 'hide the value Lines'},
     {name: 'hideLinesFiller?: boolean', description: 'hide the filler element for Lines'},
     {name: 'hidePoints?: boolean', description: 'hide the value Points'},
+    {name: 'hideTooltip?: boolean', description: 'Hides the Tooltip on the Chart'},
   ];
 
   eventChart: PropertyElement[] = [

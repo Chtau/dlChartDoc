@@ -22,6 +22,8 @@ export class BarChart implements OnInit {
   leftScaleAxis: boolean = true;
   rightScaleAxis: boolean = false;
   hideSelectLine: boolean = false;
+  barFullFilled: boolean = false;
+  hideTooltip: boolean = false;
 
   hideChartHoverEffect: boolean = false;
   hideChartSelectEffect: boolean = false;
@@ -80,6 +82,8 @@ export class BarChart implements OnInit {
     {name: 'leftScaleAxis?: boolean', description: 'show the left scale Axis'},
     {name: 'rightScaleAxis?: boolean', description: 'show the right scale Axis'},
     {name: 'hideSelectLine?: boolean', description: 'hides the line when a Bar is selected'},
+    {name: 'barFullFilled?: boolean', description: 'Bars colors are full filled'},
+    {name: 'hideTooltip?: boolean', description: 'Hides the Tooltip on the Chart'},
   ];
 
   eventChart: PropertyElement[] = [

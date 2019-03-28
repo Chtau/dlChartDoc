@@ -17,6 +17,8 @@ import { GithubGistModule } from '../../shared/gist.component';
 })
 export class Piechart implements OnInit {
 
+  hideTooltip: boolean = false;
+
   hideChartHoverEffect: boolean = false;
   hideChartSelectEffect: boolean = false;
 
@@ -71,6 +73,7 @@ export class Piechart implements OnInit {
     {name: 'chartid: string', description: 'Unique Chart id'},
     {name: 'values: Value[]', description: 'Values to show in the Chart'},
     {name: 'donut?: number', description: 'sets the size of the donut radius (must be between 0 - 1)'},
+    {name: 'hideTooltip?: boolean', description: 'Hides the Tooltip on the Chart'},
   ];
 
   eventChart: PropertyElement[] = [

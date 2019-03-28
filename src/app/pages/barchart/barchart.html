@@ -13,6 +13,8 @@
           [leftScaleAxis]="leftScaleAxis"
           [rightScaleAxis]="rightScaleAxis"
           [hideSelectLine]="hideSelectLine"
+          [barFullFilled]="barFullFilled"
+          [hideTooltip]="hideTooltip"
         ></dl-bar-chart>
     </div>
     <div class="docs-content-item">
@@ -38,6 +40,8 @@
         <mat-checkbox [(ngModel)]="hideSelectLine">Hide selection Line</mat-checkbox>
         <mat-checkbox [(ngModel)]="leftScaleAxis">Left Scale Axis</mat-checkbox>
         <mat-checkbox [(ngModel)]="rightScaleAxis">Right Scale Axis</mat-checkbox>
+        <mat-checkbox [(ngModel)]="barFullFilled">Bars colors fill</mat-checkbox>
+        <mat-checkbox [(ngModel)]="hideTooltip">Hide Chart tooltip</mat-checkbox>
       </div>
       <br>
       <hr>
@@ -143,6 +147,18 @@
           <p>custom Theme function</p>
           <app-property-table [dataSource]="propTable.propertiesTooltipTheme"></app-property-table>
           <h4>@mixin tooltip-chart-theme($theme)</h4>
+          <p>mixin to use a Theme</p>
+          <hr>
+          <h3>Theme SCSS Axis</h3>
+          <pre>@import '~dl-chart/lib/shared/axis.theme';</pre>
+          <h4>@function light-axis-chart-theme()</h4>
+          <p>predefined light Theme</p>
+          <h4>@function dark-axis-chart-theme()</h4>
+          <p>predefined dark Theme</p>
+          <h4>@function axis-theme($line-color, $text-color)</h4>
+          <p>custom Theme function</p>
+          <app-property-table [dataSource]="propTable.propertiesAxisTheme"></app-property-table>
+          <h4>@mixin axis-chart-theme($theme)</h4>
           <p>mixin to use a Theme</p>
       </div>
     </app-doc-detail>
