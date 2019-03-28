@@ -1,0 +1,84 @@
+<div class="docs-content" style="margin-top: 50px;min-height: 1200px;">
+  <div class="docs-content-row">
+    <div class="docs-content-item">
+      <button class="clear-log-button" mat-button (click)="onClickClearLog()">Clear Log</button>
+      <div #eventlog class="eventlog">
+        <p *ngFor="let log of eventLog">{{log}}</p>
+      </div>
+    </div>
+    <div class="docs-content-item" style="min-width: 400px;">
+      <mat-checkbox [(ngModel)]="customTooltip">Show Custom Tooltip</mat-checkbox>
+      <dl-bar-chart 
+          [chartid]="'bar-chart-demo'" 
+          [values]="values" 
+          [orientation]="0"
+          [hideTooltip]="customTooltip"
+        >
+      </dl-bar-chart>
+    </div>
+  </div>
+
+
+  <app-doc-detail  style="width: 80%;">
+      <div chart-content class="docs-content-row">
+        <div>
+          <div class="json-output">
+            <p>Selected Object (JSON):</p>
+            <pre>{{objectSelect | json}}</pre>
+          </div>
+        </div>
+        <div class="docs-content-item">
+          <div class="json-output">
+            <p>Hover Object (JSON):</p>
+            <pre>{{objectHover | json}}</pre>
+          </div>
+        </div>
+      </div>
+      <div code-html style="height: 800px;padding-bottom: 20px;">
+          <github-gist [gistId]="'Chtau/7f2fda8789059811a06e37e120d691c8'"></github-gist>
+      </div>
+      <div code-ts style="height: 800px;padding-bottom: 20px;">
+          <github-gist [gistId]="'Chtau/512da08fd0e2fc6804064de6245ad969'"></github-gist>
+      </div>
+      <div code-css style="height: 800px;padding-bottom: 20px;">
+          <github-gist [gistId]="'Chtau/2b4583b63f4a40ac5cd84a038531d495'"></github-gist>
+      </div>
+      <div api-content>
+          <br>
+          <h2>API reference for Chart Item Service</h2>
+          <pre>Import the Service from any of the avialible modules</pre>
+          <pre>import {{ '{' }} ChartItemService {{ '}' }}  from "dl-chart";</pre>
+          <h3>ChartItemService</h3>
+          <p></p>
+          <h4>Methods</h4>
+          <app-property-table [dataSource]="methodsChart"></app-property-table>
+          <h4>Events</h4>
+          <app-property-table [dataSource]="eventChart"></app-property-table>
+          <br>
+          <hr>
+          <h3>Datatypes</h3>
+          <h4>ServiceItem&lt;T&gt;</h4>
+          <app-property-table [dataSource]="propTable.typesServiceItem"></app-property-table>
+          <br>
+          <hr>
+          <h3>Interfaces</h3>
+          <h4>IValue</h4>
+          <app-property-table [dataSource]="propTable.interfaceValue"></app-property-table>
+          <h4>IChartItem</h4>
+          <app-property-table [dataSource]="propTable.interfaceChartItem"></app-property-table>
+          <br>
+      </div>
+    </app-doc-detail>
+
+    <div *ngIf="tooltipShow" [style.top.px]="tooltipY" [style.left.px]="tooltipX" class="customtooltip">
+      <div class="legend-item">
+        <span id="legend-color" class="legend-color-box" [style.background-color]="objectHover.value.color"></span>
+        <span class="legend-text-content ">  
+          {{ objectHover.value.sourceItem.name }}
+        </span>
+        <div class="json-output" style="text-align: left;">
+          <pre>{{objectHover.value.sourceItem | json}}</pre>
+        </div>
+      </div>
+    </div>
+</div>

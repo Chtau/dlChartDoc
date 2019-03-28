@@ -41,6 +41,13 @@ export class PropertyTableValues {
     {name: 'data?: any', description: 'additonal custom data'},
   ];
 
+  typesServiceItem: PropertyElement[] = [
+    {name: 'chartId: string', description: 'Chart Identifies'},
+    {name: 'value: T', description: 'entity type provided from the Chart'},
+    {name: 'tooltipX: number', description: 'Mouse position with a offset of 10 for [style.left.px]'},
+    {name: 'tooltipY: number', description: 'Mouse position with a offset of 10 for [style.top.px]'},
+  ];
+
   interfaceValue: PropertyElement[] = [
     {name: 'name: string', description: 'Identifier Name (used for default Tooltip)'},
     {name: 'color: string', description: 'valid color string (Color name or hex)'},

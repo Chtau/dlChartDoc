@@ -1,0 +1,137 @@
+// The margin between two sections
+$margin-promotion-sections: 60px;
+$margin-promotion-sections-small: 15px;
+
+.docs-content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+
+  h2 {
+    font-size: 25px;
+    font-weight: 400;
+    margin: 0 0 16px 0;
+    padding: 0;
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    margin: 0 0 24px 0;
+    padding: 0;
+  }
+}
+
+
+.docs-content-row {
+  display: flex;
+  max-width: 920px;
+  margin: $margin-promotion-sections 0;
+}
+
+.docs-content-row {
+  max-width: 90%;
+}
+
+.docs-content-item {
+  width: 50%;
+  max-width: 500px;
+  max-height: 500px;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+.input-full-width {
+  width: 100%;
+}
+
+.json-output {
+  margin-top: 25px;
+}
+
+.json-output pre {
+  background-color: whitesmoke;
+  padding: 15px;
+}
+
+.input-filters .mat-form-field, .mat-checkbox {
+  margin-right: 10px;
+}
+
+.eventlog {
+  height: 250px;
+  overflow-y: scroll;
+  width: 400px;
+  background: #2b2b2b;
+  color: #d9d9d9;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+.eventlog p {
+  margin: 0px;
+  font-size: 14px;
+  line-height: 1em;
+}
+
+.clear-log-button {
+  border: 1px solid blue;
+  color: blue;
+  margin-bottom: 5px;
+}
+
+.customtooltip {
+  position:fixed;
+  overflow:hidden;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 2px;
+  z-index: 80;
+  background-color: #d7d7d7;
+  color: #000;
+  border: 1px solid black;
+}
+
+.legend-items {
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: -10px;
+	margin-top: -10px;
+}
+.legend-items .legend-item {
+  flex: 1 0 auto;
+  margin-left: 10px;
+  margin-top: 10px;
+  text-align: left;
+  min-width: 50px;
+}
+
+.legend-items:hover {
+  cursor: default;
+}
+
+.legend-color-box {
+  min-height: 15px;
+  min-width: 15px;
+  display: inline-block;
+  border-color: #000;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.legend-text-content {
+  min-width: 25px;
+  vertical-align: top;
+}
+
+/**
+  * Rules for when the device is detected to be a small screen.
+  */
+@media (max-width: 720px) {
+   .docs-content-row {
+    margin: $margin-promotion-sections-small 0;
+  }
+}

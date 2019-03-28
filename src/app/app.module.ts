@@ -14,6 +14,7 @@ import { PiechartModule } from './pages/piechart';
 import { LineChartModule } from './pages/linechart';
 import { LegendModule } from './pages/legend';
 import { GithubGist } from './shared/gist.component';
+import { ChartItemServiceModule } from './pages/chartitemservice';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { GithubGist } from './shared/gist.component';
     PiechartModule,
     LineChartModule,
     LegendModule,
+    ChartItemServiceModule
   ],
   providers: [],
   bootstrap: [AppComponent]
