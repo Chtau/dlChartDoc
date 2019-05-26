@@ -21,6 +21,7 @@ export class Piechart implements OnInit {
 
   hideChartHoverEffect: boolean = false;
   hideChartSelectEffect: boolean = false;
+  animation: boolean = true;
 
   donutRadius: number = 0;
 
@@ -72,6 +73,7 @@ export class Piechart implements OnInit {
   propertiesChart: PropertyElement[] = [
     {name: 'chartid: string', description: 'Unique Chart id'},
     {name: 'values: Value[]', description: 'Values to show in the Chart'},
+    {name: 'animation: boolean', description: 'can disable chart build/refresh animation'},
     {name: 'donut?: number', description: 'sets the size of the donut radius (must be between 0 - 1)'},
     {name: 'hideTooltip?: boolean', description: 'Hides the Tooltip on the Chart'},
   ];

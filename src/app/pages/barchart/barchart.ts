@@ -24,6 +24,7 @@ export class BarChart implements OnInit {
   hideSelectLine: boolean = false;
   barFullFilled: boolean = false;
   hideTooltip: boolean = false;
+  animation: boolean = true;
 
   hideChartHoverEffect: boolean = false;
   hideChartSelectEffect: boolean = false;
@@ -76,6 +77,7 @@ export class BarChart implements OnInit {
   propertiesChart: PropertyElement[] = [
     {name: 'chartid: string', description: 'Unique Chart id'},
     {name: 'values: Value[]', description: 'Values to show in the Chart'},
+    {name: 'animation: boolean', description: 'can disable chart build/refresh animation'},
     {name: 'orientation?: ChartOrientation', description: 'orientation for the Chart value Axis'},
     {name: 'barOffset?: number', description: 'offset between the chart Bars in percent Chart width'},
     {name: 'steps?: number', description: 'number of steps in the scale Axis'},

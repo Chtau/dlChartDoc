@@ -27,6 +27,7 @@ export class LineChart implements OnInit {
   hidePoints: boolean = false;
   hideLinesFiller: boolean = false;
   hideTooltip: boolean = false;
+  animation: boolean = true;
 
   hideChartHoverEffect: boolean = false;
   hideChartSelectEffect: boolean = false;
@@ -124,6 +125,7 @@ export class LineChart implements OnInit {
   propertiesChart: PropertyElement[] = [
     {name: 'chartid: string', description: 'Unique Chart id'},
     {name: 'values: Line[]', description: 'Values to show in the Chart'},
+    {name: 'animation: boolean', description: 'can disable chart build/refresh animation'},
     {name: 'steps?: number', description: 'number of steps in the scale Axis'},
     {name: 'scaleLabel?: string', description: 'Text label for the Y Axis'},
     {name: 'leftScaleAxis?: boolean', description: 'show the left scale Axis'},
