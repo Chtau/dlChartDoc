@@ -16,7 +16,7 @@ import { GithubGistModule } from '../../shared/gist.component';
 })
 export class ChartItemServicePage implements OnInit {
 
-  @ViewChild('eventlog') private eventLogController: ElementRef;
+  @ViewChild('eventlog', { static: true }) private eventLogController: ElementRef;
 
   values: Value[] = [
     new Value('Red', 5, 'Red'),

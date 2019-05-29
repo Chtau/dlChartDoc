@@ -11,7 +11,7 @@ import { Component, Input, ViewChild, ElementRef, ViewEncapsulation, AfterConten
 
 export class GithubGist implements AfterContentChecked {
   
-  @ViewChild('iframe') iframe:ElementRef;
+  @ViewChild('iframe', { static: true }) iframe:ElementRef;
   @Input() gistId: string = null;
   @Input() file:string;
 
