@@ -1,6 +1,8 @@
 import {Component, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MatButtonModule, MatMenuModule, MatIconModule} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import {RouterModule} from '@angular/router';
 
 @Component({

@@ -1,5 +1,8 @@
 import {Component, NgModule, OnInit} from '@angular/core';
-import {MatButtonModule, MatInputModule, MatSelectModule, MatCheckboxModule} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import {RouterModule} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';

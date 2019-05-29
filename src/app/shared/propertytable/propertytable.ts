@@ -1,6 +1,10 @@
 import {Component, NgModule, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MatButtonModule, MatMenuModule, MatIconModule, MatTabsModule, MatTableModule} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
 import {RouterModule} from '@angular/router';
 
 export interface PropertyElement {

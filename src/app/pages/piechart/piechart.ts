@@ -1,5 +1,9 @@
 import {Component, NgModule, OnInit} from '@angular/core';
-import {MatButtonModule, MatInputModule, MatCheckboxModule, MatTabsModule, MatSliderModule} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatInputModule } from '@angular/material/input';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatTabsModule } from '@angular/material/tabs';
 import {RouterModule} from '@angular/router';
 import { DlPieChartModule, Value, DlLegendModule, IChartItem } from "dl-chart";
 import { FormsModule } from '@angular/forms';

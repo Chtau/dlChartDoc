@@ -1,5 +1,5 @@
 import {Component, NgModule, OnInit} from '@angular/core';
-import {MatButtonModule} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
 import {RouterModule} from '@angular/router';
 import { Value, TooltipConfiguration, Point, Line } from 'dl-chart';
 import { DlChartModule } from "dl-chart";
